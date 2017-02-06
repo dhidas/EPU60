@@ -1,0 +1,185 @@
+#include "macro_constants_def.pmc"
+
+; ******************************************************************************
+; Initializes after restart
+;
+; ******************************************************************************
+
+#define MilliSeconds               * 8388608/i10
+#define Timer                      I6612
+
+DISABLE PLC PLC_Initialization
+OPEN PLC PLC_Initialization CLEAR
+
+	; Disable PLCs
+	DISABLE PLC0    
+	DISABLE PLC2..31    
+	
+	; Wait for Lexium drivers to initialize
+	Timer=2000 MilliSeconds
+	WHILE(Timer>0) ENDW  	
+	
+	CMD^K ; Make sure motors are killed
+
+	; Wait for motors to be killed
+	Timer=500 MilliSeconds
+	WHILE(Timer>0) ENDW  	
+	
+  ; Make sure limits are not disabled 
+	I124 = $80A001
+	I224 = $80A001
+	I324 = $80A001
+	I424 = $80A001
+	I524 = $80A001
+	I624 = $80A001
+	I724 = $80A001
+	I824 = $80A001
+
+	; Clear Home Complete bit for the Gap motors	
+	M145=0
+	M245=0
+	M345=0
+	M445=0
+
+	
+	; Setup BiSS
+	IF (SimulationMode=0)
+		; ********************
+		; SETUP BiSS Encoders
+		; ********************
+		BiSSGlobal1 = $63220B
+		BiSSGlobal2 = $63220B
+		
+		BiSSCh1Ctrl = $21149A
+		BiSSCh2Ctrl = $21149A
+		BiSSCh3Ctrl = $21149A
+		BiSSCh4Ctrl = $21149A
+		BiSSCh5Ctrl = $21149A
+		BiSSCh6Ctrl = $21149A
+		BiSSCh7Ctrl = $21149A
+		BiSSCh8Ctrl = $21149A
+		
+		; Wait for encoder register setup
+		; This should delay should be big because it needs time to stabilize
+		Timer=10000 MilliSeconds
+		WHILE(Timer>0) ENDW  
+	
+		; Reread encoders
+		; Read motor's absolute positions
+		CMD"#1$*#2$*#3$*#4$*#5$*#6$*#7$*#8$*"
+		
+		; Wait for position read
+		Timer=250 MilliSeconds 
+		WHILE(Timer>0) ENDW  
+		
+		; Scale absolute position (shift right 5 bits)		
+		M162=M162/32 
+		M262=M262/32 
+		M362=M362/32 
+		M462=M462/32 
+		M562=M562/32 
+		M662=M662/32 
+		M762=M762/32 
+		M862=M862/32 
+		
+		; Wait for scaling
+		Timer=500 MilliSeconds 
+		WHILE(Timer>0) ENDW  
+	ELSE
+		; Declare some meaningful positions (50 mm)
+		M162=960000000
+		M262=960000000
+		M362=960000000
+		M462=960000000
+		M562=0
+		M662=0
+		M762=0
+		M862=0
+	ENDIF
+		
+
+  ; define lookaheads for coordinate systems
+	ADDRESS&16
+	COMMAND"DEFINE LOOKAHEAD 50,10"
+	ADDRESS&15
+	COMMAND"DEFINE LOOKAHEAD 50,10"
+	ADDRESS&14
+	COMMAND"DEFINE LOOKAHEAD 50,10"
+	ADDRESS&13
+	COMMAND"DEFINE LOOKAHEAD 50,10"
+	ADDRESS&12
+	COMMAND"DEFINE LOOKAHEAD 50,10"
+	ADDRESS&11
+	COMMAND"DEFINE LOOKAHEAD 50,10"
+	ADDRESS&10
+	COMMAND"DEFINE LOOKAHEAD 50,10"
+	ADDRESS&9
+	COMMAND"DEFINE LOOKAHEAD 50,10"
+	ADDRESS&8
+	COMMAND"DEFINE LOOKAHEAD 50,10"
+	ADDRESS&7
+	COMMAND"DEFINE LOOKAHEAD 50,10"
+	ADDRESS&6
+	COMMAND"DEFINE LOOKAHEAD 50,10"
+	ADDRESS&5
+	COMMAND"DEFINE LOOKAHEAD 50,10"
+	ADDRESS&4
+	COMMAND"DEFINE LOOKAHEAD 50,10"
+	ADDRESS&3
+	COMMAND"DEFINE LOOKAHEAD 50,10"
+	ADDRESS&2
+	COMMAND"DEFINE LOOKAHEAD 50,10"
+	ADDRESS&1
+	COMMAND"DEFINE LOOKAHEAD 50,10"
+
+	
+	;********************************
+	; Initialize girder modes to Gap coordinated
+	;*******************************
+	; Set modes to girder coordinated
+	UpperGirderModeReq=GapCoordinated
+	UpperGirderMode=GapCoordinated
+	LowerGirderModeReq=GapCoordinated
+	LowerGirderMode=GapCoordinated
+	
+	; Disable position following
+	Mtr1FollowingEnable = 0
+	Mtr2FollowingEnable = 0
+	Mtr3FollowingEnable = 0
+	Mtr4FollowingEnable = 0
+	
+	IF (SimulationMode=0)
+		Mtr1PGain = PGainCalibrated
+		Mtr2PGain = PGainCalibrated
+		Mtr3PGain = PGainCalibrated
+		Mtr4PGain = PGainCalibrated
+	ENDIF
+
+	CMD"&1 #1->I"
+	CMD"&1 #2->I"
+	CMD"&1 #3->I"
+	CMD"&1 #4->I"
+	
+	; Make sure StopAll is NOT requested
+	StopAllReq=0
+	
+	; *************************
+	; Enable plcs
+	; *************************
+	ENABLE PLC PLC_MovementInProgress
+	ENABLE PLC PLC_Interlock
+	ENABLE PLC PLC_OpenGap
+	ENABLE PLC PLC_Homing
+	ENABLE PLC PLC_EncoderLoss
+	ENABLE PLC PLC_MoveRequest
+	ENABLE PLC PLC_KillMotors
+	ENABLE PLC PLC_Limits
+	ENABLE PLC PLC_GapPosReadback
+	ENABLE PLC PLC_PhasePosReadback
+	ENABLE PLC PLC_ModeChange
+	ENABLE PLC PLC_Calibrate
+	
+	; Disable this PLC
+	DISABLE PLC PLC_Initialization
+
+CLOSE

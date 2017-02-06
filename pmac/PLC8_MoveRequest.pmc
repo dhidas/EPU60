@@ -1,0 +1,114 @@
+#include "macro_constants_def.pmc"
+
+#define MilliSeconds               * 8388608/i10
+#define Timer                      I6311
+
+#define ABORT_DELAY				250
+#define ENABLE_DELAY			200
+#define ENABLE_RETRIES		5
+
+
+#define MoveAborted				P86
+#define MotorNo						P87
+#define MotorError				P89
+#define RetryNo						P90
+
+
+DISABLE PLC PLC_MoveRequest
+OPEN PLC PLC_MoveRequest
+	CLEAR 
+
+	IF (StopAll=0 AND InterlockState=0 AND OpenGapExecuting=0)
+		
+		; ***************************************************
+		; 1. Abort movement on axis if movement exists
+		; ***************************************************	
+		MoveAborted = 0
+		IF (GapMoveReq!=0 AND CS1Running=1)
+			ADDRESS&1
+			CMD"A"
+			MoveAborted = 1
+		ENDIF
+		
+		IF (PhaseMoveReq!=0 AND CS2Running=1)
+			ADDRESS&2
+			CMD"A"
+			MoveAborted = 1
+		ENDIF			
+		
+		IF (MoveAborted!=0)
+			Timer=ABORT_DELAY MilliSeconds 
+			WHILE(Timer>0) ENDW
+		ENDIF
+		
+		; ***************************************************
+		; 2. Make sure to enable _ALL_ motors
+		; ***************************************************
+		IF (GapMoveReq!=0 OR PhaseMoveReq!=0)
+			RetryNo = 0
+			MotorError=0
+			WHILE (RetryNo<ENABLE_RETRIES)
+				CMD"#1J/#2J/#3J/#4J/#5J/#6J/#7J/#8J/"
+		
+				Timer=ENABLE_DELAY MilliSeconds 
+				WHILE(Timer>0) ENDW
+				
+				ADDRESS&1	
+				CMD"E"
+				
+				ADDRESS&2	
+				CMD"E"
+				
+				Timer=ENABLE_DELAY MilliSeconds 
+				WHILE(Timer>0) ENDW
+				
+				; Check if there are errors on enabling motors
+				MotorNo=1
+				MotorError=0
+				WHILE(MotorNo<9)
+					; Check for fatal following error
+					IF (M(MotorNo*100+42)=1)
+						MotorError=1
+						MotorNo=9 ; this will exit the outer loop
+					ENDIF
+					
+					MotorNo=MotorNo+1
+				ENDW
+				
+				IF (MotorError=0)
+					; No motor enable error , exit 
+					RetryNo = ENABLE_RETRIES+1
+				ENDIF
+				
+				RetryNo = RetryNo + 1
+			ENDW
+		ENDIF
+		
+		; ***************************************************
+		; 3. Issue movements if there is no motor error
+		; ***************************************************
+		IF (MotorError=0)
+			IF (GapMoveReq!=0)
+				GapMoveReq=0
+				ADDRESS&1
+				Q77=GapSetpoint
+				CMD"B10R"
+				CS1RunningPrev=1	; Make sure that this is signaled so we detect transition out in PLC9_KillMotors
+			ENDIF
+			
+			IF (PhaseMoveReq!=0)
+				PhaseMoveReq=0
+				ADDRESS&2
+				Q77=PhaseSetpoint
+				CMD"B12R"
+				CS2RunningPrev=1 ; Make sure that this is signaled so we detect transition out in PLC9_KillMotors
+			ENDIF
+		ELSE
+			GapMoveReq=0
+			PhaseMoveReq=0
+		ENDIF
+	ELSE
+		GapMoveReq=0
+		PhaseMoveReq=0
+	ENDIF
+CLOSE

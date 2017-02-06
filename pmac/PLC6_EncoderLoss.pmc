@@ -1,0 +1,72 @@
+CLOSE
+
+#include "macro_constants_def.pmc"
+
+
+; ******************************************************************************
+; PLC That monitors for errors in the linear encoders
+; ******************************************************************************
+#define MilliSeconds    	*8388608/i10
+#define timer							I6512
+		
+#define MotorAxis 						P62
+	
+#define MotorTimeoutBit				M(MotorAxis*10+931)
+#define MotorCRCErrorBit			M(MotorAxis*10+932)
+#define MotorEncErrorBit			M(MotorAxis*10+933)
+	
+#define MotorFilteredCommErr	P(MotorAxis+91)
+#define MotorFilteredReadErr    P(MotorAxis+101)
+#define MotorErrTemp		P99
+
+
+DISABLE PLC PLC_EncoderLoss
+OPEN PLC PLC_EncoderLoss CLEAR
+	; Count zero based
+	MotorAxis=0
+	
+	; Repeat for all encoders
+	WHILE (MotorAxis<8)
+		; Calculate low-pass filtered value of encoder comm errors (CRC or time-out)
+    
+		; Record current comm error
+		IF (MotorTimeoutBit=1) 
+		OR (MotorCRCErrorBit=1)
+			MotorErrTemp=1
+		ELSE
+			MotorErrTemp=0
+		ENDIF
+		
+        ; Calculate low-pass filtered value of the communication error
+		MotorFilteredCommErr=(0.2*MotorErrTemp) + (0.8*MotorFilteredCommErr)
+        
+        IF (MotorEncErrorBit=0)
+            MotorErrTemp=1
+        ELSE
+            MotorErrTemp=0
+        ENDIF
+        
+        ; Calculate low-pass filtered value of the read error
+        MotorFilteredReadErr=(0.2*MotorErrTemp) + (0.8*MotorFilteredReadErr)
+        
+		; If protection is enabled and error is presen, execute killall action
+		IF (SerialEncProtectionEnabled!=0)
+			IF (MotorFilteredCommErr>0.9 OR MotorFilteredReadErr>0.9)
+				; Kill all motors
+				CMD^K	
+				
+				; Wait for the motors to be killed
+				timer=250 MilliSeconds
+				WHILE(timer>0) ENDW  	
+				
+				; Request StopAll
+				StopAllReq=1
+			ENDIF
+		ENDIF
+	
+		MotorAxis=MotorAxis+1	
+		IF (MotorAxis=8)
+			MotorAxis=0
+		ENDIF
+	ENDWHILE
+CLOSE

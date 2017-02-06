@@ -1,0 +1,160 @@
+#include "macro_constants_def.pmc"
+
+
+CLOSE
+END GATHER
+DELETE GATHER
+DELETE TRACE
+
+#define GapMotorSpeed 		20.3125
+#define GapMotorAccelTime 	2850
+
+#define Timer			I6612 				; Coordinate system 16 - Timer 2
+#define MilliSeconds    * 8388608/I10
+#define StopTime		500   			; Wait ms for everything to stop
+#define GirderChangeTime 2000			; Wait for the girder mode change to be applied
+										; Resolving bug SPR3, test 3.3.13 from 2013-03-26
+
+
+DISABLE PLC PLC_OpenGap
+OPEN PLC PLC_OpenGap CLEAR
+	IF (OpenGapExecuting=0)
+	
+		; If OpenGap signal arrives, handle it
+		; !!! Make sure that we ignore the situation in StopAll/InterlockState
+		; Also do not execute if any gap motor is disabled (we do not want to enable on-purpose disabled motor)
+		IF (OpenGapSignal!=0 AND InterlockState=0 AND StopAll=0)
+			OpenGapExecuting=1
+			
+			;********************
+			; Disable all PLCs that could cause movement
+			; Clear movement requests
+			;*******************
+			DISABLE PLC PLC_MoveRequest
+			DISABLE PLC PLC_Homing
+			MotorHomeRequest = 0 ; Disable request if any
+			
+			; Abort all gap movements and stop all gap motors
+			CMD^A
+
+			; Wait StopTime ms for them to stop
+			Timer = StopTime MilliSeconds
+			WHILE (Timer > 0)
+			ENDW
+			
+				
+			; Make sure to bring the girders in Gap Coordinated mode
+			IF (UpperGirderMode!=0 OR LowerGirderMode!=0)
+				; State coordinated movement for both girders
+				UpperGirderModeReq=0
+				LowerGirderModeReq=0
+				WHILE (UpperGirderMode!=0 OR LowerGirderMode!=0) ENDW ; Wait for the change to happen
+				
+				; Resolving bug SPR3, test 3.3.13 from 2013-03-26
+				; Added aditional delay to make sure the OpenGAP motion program sees the change
+				; It was reporting an error
+				Timer = GirderChangeTime MilliSeconds
+				WHILE (Timer > 0)
+				ENDW
+			ENDIF
+			
+			; Enable motors (close loops)
+			CMD^E
+			
+			; Wait StopTime ms for girder change commands and enable commands to process
+			Timer = StopTime MilliSeconds
+			WHILE (Timer > 0)
+			ENDW
+		
+			; Finally execute OpenGap movement
+			ADDRESS&1
+			
+			; Go to MaximumGap, minus the offset
+			Q77 = MaximumGap - ABS(CoordinatedCenterOffset)
+			CMD"B4R"
+		
+		ENDIF
+	
+	ELSE
+		; Signal cleared
+		IF (OpenGapSignal=0)
+		
+			; If we were still moving, stop movement	
+			IF (CS1Running=1)
+				; If there is movement abort it.
+				; Abort all moves and stop all motors
+				ADDRESS&1
+				COMMAND"A"
+					
+				; Wait StopTime ms for them to stop
+				Timer = StopTime MilliSeconds
+				WHILE (Timer > 0)
+				ENDW
+				
+				; Kill motors			
+				CMD^K
+				; Wait StopTime ms for them to stop
+				Timer = StopTime MilliSeconds
+				WHILE (Timer > 0)
+				ENDW			
+			ENDIF	
+	
+			;********************
+			; Enable all PLCs that could cause movement
+			; Clear movement conditions
+			;*******************
+			MotorHomeRequest = 0 ; Disable request if any
+			ENABLE PLC PLC_Homing
+			ENABLE PLC PLC_MoveRequest
+			OpenGapExecuting = 0
+		ENDIF
+
+	ENDIF
+	
+CLOSE
+
+; ******************************************************************************
+; Open Gap Motion program
+; ******************************************************************************
+&1 OPEN PROG 4 CLEAR
+	
+	; Select mode
+	LINEARABS
+	
+	; Prevent movement while interlock active
+	IF (InterlockState=0 AND UpperGirderMode=GapCoordinated AND LowerGirderMode=GapCoordinated)
+		; Clear error bit
+		CS1Error = 0	
+
+		; *******************************
+		; Make sure to go to zero taper
+		; *******************************
+		; Feedrate calculated by only Z-taper axis
+		FRAX(Z)
+		; Time to taper speed in ms. Corresponds to nominal acceleration
+		I5187=350
+		; Taper speed is 4 times individual motor speed, adjusted for time units
+		F(4*GapJogSpeed*I5190) 
+		; Go to zero tapper
+		Z(0)
+		DWELL50
+		
+		; *******************************
+		; Move to new gap/center.
+		; *******************************
+		; Feedrate calculated by only X-gap axis
+		FRAX(X)
+		
+		; Time to full speed 2.85 s By design
+		I5187=2850 
+		; Gap speed is 2 times individual motor speed, adjusted for time units
+		F(2*GapMotorSpeed*I5190) 
+		
+		; Go to new center offset and gap
+		X(Q77)Y(CoordinatedCenterOffset)Z(0)
+		DWELL50
+
+	ELSE
+		CS1Error = 1 ; Declare error on the CS
+	ENDIF
+CLOSE

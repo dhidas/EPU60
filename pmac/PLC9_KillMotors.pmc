@@ -1,0 +1,35 @@
+#include "macro_constants_def.pmc"
+
+
+#define MilliSeconds              * 8388608/i10
+#define Timer                     I6412
+#define PRE_KILL_DELAY 						1600
+#define POST_KILL_DELAY 					400
+
+DISABLE PLC PLC_KillMotors
+OPEN PLC PLC_KillMotors
+	CLEAR 
+	
+	; Handle transition out of movement - kill the motors
+	; Kill motors only if there is no pending request to move, and there is no current movement
+	IF (GapMoveReq=0 AND PhaseMoveReq=0 AND CS1Running=0 AND CS2Running=0)
+		; Kill if there was any movement previously
+		IF (CS1RunningPrev=1 OR CS2RunningPrev=1)
+			; Pre-kill delay - wait for motors to stabilize around last commanded position to reduce error
+			; Command delay
+			Timer=PRE_KILL_DELAY MilliSeconds
+			WHILE(Timer>0) ENDW
+			
+			; Disable amplifiers
+			CMD"#1K#2K#3K#4K#5K#6K#7K#8K"
+			
+			; Command delay
+			Timer=POST_KILL_DELAY MilliSeconds
+			WHILE(Timer>0) ENDW
+		ENDIF
+	ENDIF
+	
+	; Record the current status to detect changes
+	CS1RunningPrev=CS1Running
+	CS2RunningPrev=CS2Running	
+CLOSE

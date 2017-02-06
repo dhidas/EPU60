@@ -1,0 +1,162 @@
+#include "macro_constants_def.pmc"
+
+CLOSE
+
+
+#define Timer			I6411 				; Coordinate system 14 - Timer 1
+#define MilliSeconds    * 8388608/I10
+#define StopTime		200   				; Wait ms for everything to stop
+
+; ******************************************************************************
+; Changes mode of motors / coordinate systems based on request
+; ******************************************************************************
+DISABLE PLC PLC_ModeChange
+OPEN PLC PLC_ModeChange CLEAR
+	; Ignore change request while moving
+	IF (MovementInProgress=0)
+		
+		; Handle upper girder change
+		; Only allow changes when in StopAll
+		IF (UpperGirderModeReq!=UpperGirderMode)
+			; Disable position following
+			Mtr1FollowingEnable = 0
+			Mtr2FollowingEnable = 0
+		
+			IF (UpperGirderModeReq=GapCoordinated)				
+				IF (SimulationMode=0)
+					Mtr1PGain = PGainCalibrated
+					Mtr2PGain = PGainCalibrated
+				ENDIF
+				
+				; Set in coord system
+				CMD"&1 #1->I"
+				CMD"&1 #2->I"
+				
+				; Kill motors they will be enabled by trigger PLCs
+				CMD"#1K#2K"
+			ENDIF
+			
+			IF (UpperGirderModeReq=LeftMotorMaster)
+				IF (SimulationMode=0)
+					Mtr1PGain = PGainAttenuated
+					Mtr2PGain = PGainAttenuated
+				ENDIF
+				
+				Mtr2FollowingEnable = 1	
+				
+				; Close loop if allowed
+				IF (StopAll=0 AND StopAllReq=0 AND InterlockState=0)
+					CMD"#1J/"
+					CMD"#2J/"
+				ENDIF
+			ENDIF
+			
+			IF (UpperGirderModeReq=RightMotorMaster)
+				IF (SimulationMode=0)
+					Mtr1PGain = PGainAttenuated
+					Mtr2PGain = PGainAttenuated
+				ENDIF
+				
+				Mtr1FollowingEnable = 1
+				
+				; Close loop if allowed
+				IF (StopAll=0 AND StopAllReq=0 AND InterlockState=0)
+					CMD"#1J/"
+					CMD"#2J/"
+				ENDIF
+			ENDIF
+			
+			IF (UpperGirderModeReq=IndividualMotor)
+				IF (SimulationMode=0)
+					Mtr1PGain = PGainCalibrated
+					Mtr2PGain = PGainCalibrated
+				ENDIF
+				
+				; Close loop if allowed
+				IF (StopAll=0 AND StopAllReq=0 AND InterlockState=0)
+					CMD"#1J/"
+					CMD"#2J/"
+				ENDIF
+			ENDIF
+		
+		
+			; Wait StopTime ms for them to close the loop
+			Timer = StopTime MilliSeconds
+			WHILE (Timer > 0) ENDW
+			
+			UpperGirderMode=UpperGirderModeReq
+		ENDIF
+		
+		
+		; Handle lower girder change
+		; Only allow in stop all
+		IF (LowerGirderModeReq!=LowerGirderMode)
+			; Disable position following
+			Mtr3FollowingEnable = 0
+			Mtr4FollowingEnable = 0
+				
+			IF (LowerGirderModeReq=GapCoordinated)
+				IF (SimulationMode=0)
+					Mtr3PGain = PGainCalibrated
+					Mtr4PGain = PGainCalibrated
+				ENDIF
+				
+				; Set in coord system
+				CMD"&1 #3->I"
+				CMD"&1 #4->I"
+				
+				; Kill motors they will be enabled by trigger PLCs
+				CMD"#3K#4K"
+			ENDIF
+			
+			IF (LowerGirderModeReq=LeftMotorMaster)
+				IF (SimulationMode=0)
+					Mtr3PGain = PGainAttenuated
+					Mtr4PGain = PGainAttenuated
+				ENDIF
+				
+				Mtr4FollowingEnable = 1
+				
+				; Close loop if allowed
+				IF (StopAll=0 AND StopAllReq=0 AND InterlockState=0)
+					CMD"#3J/"
+					CMD"#4J/"
+				ENDIF
+			ENDIF
+			
+			IF (LowerGirderModeReq=RightMotorMaster)
+				IF (SimulationMode=0)
+					Mtr3PGain = PGainAttenuated
+					Mtr4PGain = PGainAttenuated
+				ENDIF
+						
+				Mtr3FollowingEnable = 1
+				
+				; Close loop if allowed
+				IF (StopAll=0 AND StopAllReq=0 AND InterlockState=0)
+					CMD"#3J/"
+					CMD"#4J/"
+				ENDIF
+			ENDIF
+			
+			IF (LowerGirderModeReq=IndividualMotor)
+				IF (SimulationMode=0)
+					Mtr3PGain = PGainCalibrated
+					Mtr4PGain = PGainCalibrated
+				ENDIF
+				
+				; Close loop if allowed
+				IF (StopAll=0 AND StopAllReq=0 AND InterlockState=0)
+					CMD"#3J/"
+					CMD"#4J/"
+				ENDIF
+			ENDIF
+			
+			; Wait StopTime ms for them to close the loop
+			Timer = StopTime MilliSeconds
+			WHILE (Timer > 0) ENDW
+		
+			LowerGirderMode=LowerGirderModeReq
+		ENDIF
+	ENDIF
+CLOSE

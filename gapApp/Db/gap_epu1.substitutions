@@ -1,0 +1,24 @@
+file gap.template 
+{
+	
+	# SYS,DEV: All records are prefixed with $(SYS){$(DEV)}
+	# AXIS: Axis name for the vitual gap axis
+	# PMACPORT: Port name used in asyn records
+	# COORDPORT: Port name used for motor records / axis
+	# S: Axis number
+	# MRES: Scale factor for the size units. Depends on pmacSetCoordStepsPerUnit param 3: MRES = 1/PARAM_3/CTS_PER_EGU. 
+	# VELOCITY Gap velocity in um/s
+	# ACCEL Acceleration - seconds to full velocity. 2.85 will yield total GAP movement time of 38 s. See Variables.ods spreadsheet.
+	# CTS_PER_EGU: PMAC counts in one EGU (um)
+
+	pattern
+	{ 
+		SYS, DEV, AXIS, PMACPORT, 
+		COORDPORT, S, MRES, VELOCITY, ACCEL, CTS_PER_EGU
+	}
+
+	{
+		"SR:C07-ID:G1A", "EPU:1", "Ax:Gap", "PMAC_ETH_PORT", 
+		"PMAC-GAP", "6", "0.01", "6500", "2.85", "1"
+	}
+}

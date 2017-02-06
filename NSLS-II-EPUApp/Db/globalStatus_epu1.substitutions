@@ -1,0 +1,16 @@
+file globalStatus.template 
+{
+	# SYS,DEV: All records are prefixed with $(SYS){$(DEV)}
+	# CARD: PMAC card num.
+	# TMOT: Asyn. communication timeout
+	# PORT: PMAC port
+	# RING_CHECK_SEVERITY: Alarm level for MACRO Ring Check status. Set to NO_ALARM for MACRO disabled.
+	
+	pattern 
+	{ 
+		SYS, DEV, CARD, TMOT, PORT, RING_CHECK_SEVERITY
+	}
+	{ 
+		"SR:C07-ID:G1A", "EPU:1", "0", "4", "PMAC_ETH_PORT", "NO_ALARM"
+	}
+}

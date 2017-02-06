@@ -1,0 +1,137 @@
+CLOSE
+
+#include "macro_constants_def.pmc"
+
+
+; ******************************************************************************
+; Applies new offsets for Gap movement
+; given a request
+; ******************************************************************************
+
+#define Timer								I6511 ; Coordinate system 15 - Timer 1
+#define MilliSeconds  			*8388608/I10
+#define ProcessTime					250   ; Wait between moves
+#define StabilizeTime				2000  ; Time to wait for motor to stabilise
+
+#define HomingAllowed						P71
+
+#define HomingMotor							MotorHomeStatus
+#define HomingMotorSpeed				I(HomingMotor*100+22)		
+#define HomingMotorAccel				I(HomingMotor*100+19)			
+#define HomingMotorHomeComplete	M(HomingMotor*100+45)		;	Mxx45 Home-complete bit
+
+#define HomingMotorHomePos			P(1040+HomingMotor)			; GapMotorXHomePosition	P104X	
+#define HomingMotorCaptureReg		M(HomingMotor*100+73)		; Mxx29 Encoder home capture position (cts)
+
+#define HomingMotorCurrentPos		M(HomingMotor*100+62)   ; Actual position (1/[Ixx08*32] cts)
+#define HomingMotorHomeDist			M(HomingMotor*100+72)		; Mxx72  Variable jog position/distance (cts)
+
+#define HomingMotorZeroVel			M(HomingMotor*100+33)		; Desired-velocity-zero bit
+#define HomingMotorTriggerMove	M(HomingMotor*100+50) 	; Mx50 Trigger move bit - cleared if the trigger has been found
+				
+
+DISABLE PLC PLC_Homing
+OPEN PLC PLC_Homing CLEAR
+	; Motor homing requested
+	IF (MovementInProgress=0 AND MotorHomeRequest>0 AND MotorHomeRequest<5)
+		HomingAllowed = 0 ; Homing not allowed
+		
+		; Check if homing is allowed
+		; Homing is allowed only on master motor when the girder is in the
+		; correct master-slave mode
+		IF (MotorHomeRequest=1 AND UpperGirderMode=LeftMotorMaster)
+			HomingAllowed = 1
+		ENDIF
+		
+		IF (MotorHomeRequest=2 AND UpperGirderMode=RightMotorMaster)
+			HomingAllowed = 1
+		ENDIF
+		
+		IF (MotorHomeRequest=3 AND LowerGirderMode=LeftMotorMaster)
+		  HomingAllowed = 1
+		ENDIF
+		
+		IF (MotorHomeRequest=4 AND LowerGirderMode=RightMotorMaster)
+			HomingAllowed = 1
+		ENDIF
+		
+		; Finally if homing is allowed, execute homing procedure
+		IF (HomingAllowed != 0)
+			P1200=0
+			; Set homing status
+			MotorHomeStatus=MotorHomeRequest
+			MotorHomeRequest=0
+		
+			; Address the motor
+			ADDRESS#HomingMotor
+			
+			; Apply engineering jog speed
+			HomingMotorSpeed=GapJogSpeed
+			HomingMotorAccel=GapJogAccel
+			
+			HomingMotorHomeComplete=0 ; Clear home complete bit
+			
+			; Jog desired distance towards the home switch with engineering speed
+			; using triger search move - 5 mm
+			HomingMotorHomeDist=31250
+			
+			; Go HomingPhase1Dist in positive direction towards home switch
+			; If found, back up 2 mm
+			COMMAND"J^*^-12500" 
+			
+			; Wait ProcessTime ms for the command to process
+			Timer = ProcessTime MilliSeconds
+			WHILE (Timer > 0)
+			ENDW
+			
+			WHILE (HomingMotorZeroVel=0) ; Waits for motion to complete
+			ENDWHILE
+			
+			HomingMotorHomeComplete=0 ; Clear home complete bit
+			P1200=P1200+1 
+			
+			; Jog 1 mm in positive direction trying to find the home
+			; search for home switch for 3 mm
+			HomingMotorHomeDist=18750
+			
+			HomingMotorSpeed=GapMinSpeed
+			HomingMotorAccel=GapMinAccel
+			
+			; Now execute slow move until triger movement towards the home switch. Stop 0.5 mm away from home switch
+			COMMAND"J^*^-3125" 
+			
+			; Wait ProcessTime ms for the command to process
+			Timer = ProcessTime MilliSeconds
+			WHILE (Timer > 0)
+			ENDW
+			
+			WHILE (HomingMotorZeroVel=0) ; Waits for motion to complete
+			ENDWHILE
+			
+			HomingMotorHomeComplete=0 ; Clear home complete bit
+						
+			IF (HomingMotorTriggerMove=0)
+				Timer = StabilizeTime MilliSeconds
+				WHILE (Timer > 0)
+				ENDW				
+
+				; Trigger was found, set home complete bit
+				HomingMotorHomeComplete=1
+							
+				; Save the variable 
+				HomingMotorHomePos=(HomingMotorCurrentPos/32)+3125				
+			ENDIF
+			
+			; Put back normal jog speed
+			HomingMotorSpeed=GapJogSpeed
+			HomingMotorAccel=GapJogAccel
+			
+			; If trigger was not found home-complete bit will not clear
+			MotorHomeStatus=0
+		ENDIF
+	ENDIF
+	
+	; Always clear the motorhomerequest even if the homing was not allowed.
+	; If it is not cleared homing will unexpectedly start if conditions are correct (no movement, and girder mode is correct).
+	MotorHomeRequest=0
+CLOSE

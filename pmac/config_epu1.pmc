@@ -1,0 +1,26 @@
+#include "macro_constants_def.pmc"
+
+; ************************
+; Calibrated offsets
+; ************************
+GapMotor1Offset		= -326225
+GapMotor2Offset		= -332231.25
+GapMotor3Offset		= -352318.75
+GapMotor4Offset		= -336993.75
+PhaseMotor5Offset	= -411268.75
+PhaseMotor6Offset	= -399787.5
+PhaseMotor7Offset	= -398056.25
+PhaseMotor8Offset	= -413100
+
+
+; Ixx29 Motor xx Output/First Phase Offset
+; Manual offset to get close to zero, to calibrated values
+; For Device 1
+I129 = -88 
+I229 = -8
+I329 = 0
+I429 = -15
+I529 = 0
+I629 = -26
+I729 = -10
+I829 = 0

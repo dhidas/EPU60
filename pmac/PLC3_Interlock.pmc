@@ -1,0 +1,317 @@
+#include "macro_constants_def.pmc"
+
+; ******************************************************************************
+; PLC 3 - PLC_Interlock
+; 
+; Handles:
+; 		- Interlock signal
+;		- StopAll request from software
+;		- Individual motor stop requests (StopMotorX)
+; ******************************************************************************
+CLOSE 
+
+#define Timer							I6611 				; Coordinate system 16 - Timer 1
+#define MilliSeconds    	* 8388608/I10
+
+; Command processing time between encoder related operations
+#define TIMEOUT_ENCODER 	250
+
+; Time needed to abort movement - actual maximum abort time is 30 ms, 70 ms extra
+; to accomodate command processing time
+#define TIMEOUT_ABORT 		300
+
+; Time needed to enable motors/disengage breaks + command processing time
+#define TIMEOUT_ENABLE		600
+
+; Time needed to kill motors/engage brakes + command processing time
+#define TIMEOUT_KILL			600
+
+#define TIMEOUT_FAULTRESET	300
+
+; ************************************************************
+; Individual motor stop command handling macros
+; ************************************************************
+#define MotorNumber 			P31
+#define MotorStopCommand 	P(1060+MotorNumber)
+#define MotorAmpEnabled 	M(MotorNumber*100+39)
+
+#define CoupledMotorNumber			P32
+#define CoupledMotorAmpEnabled	M(CoupledMotorNumber*100+39)
+#define CoupledMotorFollowingEn	I(CoupledMotorNumber*100+6)
+
+#define HomingPLCStopped	P33
+
+DISABLE PLC PLC_Interlock
+OPEN PLC PLC_Interlock CLEAR
+	; **************************
+	; Handle interlock request
+	; **************************
+	IF (InterlockState=0) 
+		; Check for transitioning into interlock mode
+		; Interlock is inverted signal - active 0
+		IF (Interlock=0 AND InterlockOverride=0)
+			; ******************
+			; Transitioning into interlock state
+			; ******************
+			InterlockState = 1
+			
+			;********************
+			; Disable all PLCs that could cause movement
+			; Clear movement requests
+			;*******************
+			DISABLE PLC PLC_MoveRequest
+			DISABLE PLC PLC_OpenGap
+			DISABLE PLC PLC_Homing
+			MotorHomeRequest = 0 ; Disable request if any
+			
+			; Kill Motors and disable motion programs
+			CMD^K
+			
+			; Wait for them to stop
+			Timer = TIMEOUT_KILL MilliSeconds
+			WHILE (Timer > 0)
+			ENDW
+			
+		ENDIF
+	ELSE
+		; Interlock was active,  but we need to transition out of it
+		IF (Interlock!=0 OR InterlockOverride!=0)
+		
+			; Exit out of interlock
+			IF (StopAll=0 AND StopAllReq=0)
+				; If we are using actual linear encoders, issue encoder read-out
+				IF (SimulationMode=0)		
+					; Reread encoders
+					; Read motor's absolute positions
+					CMD"#1$*#2$*#3$*#4$*#5$*#6$*#7$*#8$*"
+				
+					; Wait for position read
+					Timer=TIMEOUT_ENCODER MilliSeconds 
+					WHILE(Timer>0) ENDW  
+					
+					; Scale absolute position (shift right 5 bits)
+					M162=M162/32 
+					M262=M262/32 
+					M362=M362/32 
+					M462=M462/32 
+					M562=M562/32 
+					M662=M662/32 
+					M762=M762/32 
+					M862=M862/32 
+					
+					; Wait for scaling
+					Timer=TIMEOUT_ENCODER MilliSeconds 
+					WHILE(Timer>0) ENDW  			
+				ENDIF
+								
+				Motor1ResetFault = 1
+				Motor2ResetFault = 1
+				Motor3ResetFault = 1
+				Motor4ResetFault = 1
+				Motor5ResetFault = 1
+				Motor6ResetFault = 1
+				Motor7ResetFault = 1
+				Motor8ResetFault = 1
+				
+				Timer = TIMEOUT_FAULTRESET MilliSeconds
+				WHILE (Timer > 0) ENDW
+				
+				Motor1ResetFault = 0
+				Motor2ResetFault = 0
+				Motor3ResetFault = 0
+				Motor4ResetFault = 0
+				Motor5ResetFault = 0
+				Motor6ResetFault = 0
+				Motor7ResetFault = 0
+				Motor8ResetFault = 0
+				
+				;********************
+				; Enable all PLCs that could cause movement
+				;*******************
+				MotorHomeRequest = 0 ; Disable request if any
+				ENABLE PLC PLC_Homing
+				ENABLE PLC PLC_OpenGap
+				ENABLE PLC PLC_MoveRequest
+				
+				; If OpenGap was active at this time this will cause it to start executing again
+				OpenGapExecuting=0
+			ENDIF
+		
+			InterlockState=0
+		ELSE
+				; We are in interlock state. Make sure amps are killed and remain so
+		
+				IF (Amp1Enabled=1)
+				OR (Amp2Enabled=1)
+				OR (Amp3Enabled=1)
+				OR (Amp4Enabled=1)
+				OR (Amp5Enabled=1)
+				OR (Amp6Enabled=1)
+				OR (Amp7Enabled=1)
+				OR (Amp8Enabled=1)
+					CMD^K
+				ENDIF
+				
+		ENDIF
+	ENDIF
+	
+	
+	; **************************
+	; Handle StopAll request
+	; **************************
+	; Ignore if we are in interlock
+	IF (InterlockState=0)
+		; Handle stopall request
+		IF (StopAll!=StopAllReq)
+			; Handle request to stop, if we are not yet stopped
+			IF (StopAllReq!=0)
+				;********************
+				; Disable all PLCs that could cause movement
+				; Clear movement requests
+				;*******************
+				DISABLE PLC PLC_MoveRequest
+				DISABLE PLC PLC_OpenGap
+				DISABLE PLC PLC_Homing
+				MotorHomeRequest = 0 ; Disable request if any
+				
+				; Abort all moves and stop all motors
+				CMD"&1A&2A" 
+				
+				; Wait for them to stop
+				Timer = TIMEOUT_ABORT MilliSeconds
+				WHILE (Timer > 0) ENDW
+				
+				; Kill Motors (will disable amplifiers)
+				CMD^K
+				
+				; Wait for the command to be processed
+				Timer = TIMEOUT_KILL MilliSeconds
+				WHILE (Timer > 0) ENDW
+			ENDIF
+			
+			IF (StopAllReq=0)
+				IF (SimulationMode=0)
+					; Reread encoders
+					; Read motor's absolute positions
+					CMD"#1$*#2$*#3$*#4$*#5$*#6$*#7$*#8$*"
+				
+					; Wait for position read
+					Timer=TIMEOUT_ENCODER MilliSeconds 
+					WHILE(Timer>0) ENDW  
+					
+					; Scale absolute position (shift right 5 bits)
+					M162=M162/32 
+					M262=M262/32 
+					M362=M362/32 
+					M462=M462/32 
+					M562=M562/32 
+					M662=M662/32 
+					M762=M762/32 
+					M862=M862/32 
+					
+					; Wait for scaling
+					Timer=TIMEOUT_ENCODER MilliSeconds 
+					WHILE(Timer>0) ENDW										
+				ENDIF
+				
+				Motor1ResetFault = 1
+				Motor2ResetFault = 1
+				Motor3ResetFault = 1
+				Motor4ResetFault = 1
+				Motor5ResetFault = 1
+				Motor6ResetFault = 1
+				Motor7ResetFault = 1
+				Motor8ResetFault = 1
+				
+				Timer = TIMEOUT_FAULTRESET MilliSeconds
+				WHILE (Timer > 0) ENDW
+				
+				Motor1ResetFault = 0
+				Motor2ResetFault = 0
+				Motor3ResetFault = 0
+				Motor4ResetFault = 0
+				Motor5ResetFault = 0
+				Motor6ResetFault = 0
+				Motor7ResetFault = 0
+				Motor8ResetFault = 0
+
+				
+				;********************
+				; Enable all PLCs that could cause movement
+				; Clear movement conditions
+				;*******************
+				MotorHomeRequest = 0 ; Disable request if any
+				ENABLE PLC PLC_Homing
+				ENABLE PLC PLC_OpenGap
+				ENABLE PLC PLC_MoveRequest
+				
+				; If OpenGap was active at this time this will cause it to start executing again
+				OpenGapExecuting=0
+			ENDIF
+			
+			StopAll=StopAllReq
+		ENDIF
+	ENDIF
+	
+	; **********************************************
+	; Handle Stop commands for individual gap motors
+	; **********************************************
+	IF (CS1Running=0 AND CS2Running=0 AND StopAll=0 AND InterlockState=0)
+		MotorNumber = 1
+		HomingPLCStopped = 0 ; Flag indicating whether the plc has been stopped
+		
+		WHILE (MotorNumber<9) // For each motor
+			; *** Check for stop request & if the motor has been enabled ***
+			IF ( MotorStopCommand!=0 AND MotorAmpEnabled=1 )
+					; Special processing for Gap motors
+					IF (MotorNumber<5)
+						; Disable homing PLC and clear the homing request
+						DISABLE PLC PLC_Homing 			
+						MotorHomeRequest = 0 	
+						HomingPLCStopped = 1
+						
+						; Address the motor and issue stop
+						ADDRESS#MotorNumber
+						COMMAND"J/"
+						
+						; Find out the coupled motor 
+						; For motor 1 : 1%2 = 1 -> coupled = 1+1 = 2
+						; For motor 2 : 2%2 = 0 -> coupled = 2-1 = 1
+						; For motor 3 : 3%2 = 1 -> coupled = 3+1 = 4
+						; For motor 4 : 4%2 = 0 -> coupled = 4-1 = 3
+						CoupledMotorNumber = MotorNumber%2
+						IF (CoupledMotorNumber=1)
+							CoupledMotorNumber = MotorNumber + 1
+						ELSE
+						  CoupledMotorNumber = MotorNumber - 1
+						ENDIF
+						
+						; If the coupled motor is having a master, stop that one too
+						IF (CoupledMotorFollowingEn=1 AND CoupledMotorAmpEnabled=1)
+							ADDRESS#CoupledMotorNumber
+							COMMAND"J/"
+						ENDIF 
+					ELSE
+						; Address the motor and issue stop
+						ADDRESS#MotorNumber
+						COMMAND"J/"
+					ENDIF
+					
+					; Clear the stop 
+					MotorStopCommand=0 
+			ENDIF
+			
+			; Increment for next motor
+			MotorNumber=MotorNumber+1
+		ENDW
+		
+		; If the Homing PLC has been disabled make sure to enable it.
+		IF (HomingPLCStopped=1) 
+			; Disable any homing request issued in meantime and enable homing PLC
+			MotorHomeRequest = 0 
+			ENABLE PLC PLC_Homing 
+		ENDIF
+		
+	ENDIF
+	
+CLOSE

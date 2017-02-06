@@ -1,0 +1,152 @@
+#include "macro_constants_def.pmc"
+
+; ******************************************************************************
+; Phase Inverse and Forward kinematics, motion program and position reporting PLC
+;
+; Make sure: Isx13 Segmentation time is setup
+;            Isx50 Coordinate System x Kinematic Calculations Enable
+;
+; ******************************************************************************
+
+CLOSE
+END GATHER
+DELETE GATHER
+DELETE TRACE
+
+; ******************************************************************************
+; Phase Forward kinematic
+; ******************************************************************************
+&2 OPEN FORWARD CLEAR
+	; Q7 - X - Phase
+
+	; Compensate for the offsets
+	Q201 = P5 + PhaseMotor5Offset
+	Q202 = P6 + PhaseMotor6Offset
+	Q203 = P7 + PhaseMotor7Offset
+	Q204 = P8 + PhaseMotor8Offset
+
+	IF (PhaseMode = ParallelZ2Z3)
+		Q7 = (Q202 + Q203) / 2
+	ENDIF
+
+	IF (PhaseMode = ParallelZ1Z4)
+		Q7 = (Q201 + Q204) / 2
+	ENDIF
+
+	IF (PhaseMode = AntiParallelZ2Z3)
+		Q7 = (Q202 - Q203) / 2
+	ENDIF
+
+	IF (PhaseMode = AntiParallelZ1Z4)
+		Q7 = (Q201 - Q204) / 2
+	ENDIF
+CLOSE
+
+
+; ******************************************************************************
+; Phase Inverse kinematic
+; ******************************************************************************
+&2 OPEN INVERSE CLEAR
+	; Q7 - X - Phase
+
+	; All to zero
+	P5 = -PhaseMotor5Offset
+	P6 = -PhaseMotor6Offset
+	P7 = -PhaseMotor7Offset
+	P8 = -PhaseMotor8Offset
+
+	IF (PhaseMode = ParallelZ2Z3)
+		P6 = Q7 - PhaseMotor6Offset
+		P7 = Q7 - PhaseMotor7Offset
+	ENDIF
+
+	IF (PhaseMode = ParallelZ1Z4)
+		P5 = Q7 - PhaseMotor5Offset
+		P8 = Q7 - PhaseMotor8Offset
+	ENDIF
+
+	IF (PhaseMode = AntiParallelZ2Z3)
+		P6 = Q7 - PhaseMotor6Offset
+		P7 = -Q7 - PhaseMotor7Offset
+	ENDIF
+
+	IF (PhaseMode = AntiParallelZ1Z4)
+		P5 = Q7 - PhaseMotor5Offset
+		P8 = -Q7 - PhaseMotor8Offset
+	ENDIF
+CLOSE
+
+
+; ******************************************************************************
+; Phase Motion program
+; ******************************************************************************
+&2 OPEN PROG 12 CLEAR
+
+	; Feedrate calculated by only X axis
+	FRAX(X)
+	; Select mode
+	LINEAR ABS
+	
+	; Ignore move requests while interlock active
+	IF (InterlockState=0 AND StopAll=0)
+		; Clear error state
+		CS2Error = 0
+		
+		; Time to full speed to what comes from EPICS
+		TA(PhaseAccel*1000)
+		; Set phase feed-rate to what is delivered from EPICS
+		F(PhaseVelocity) 	
+	
+		; If change in phase mode is required, move phase to 0 first
+		IF (PhaseModeReq!=PhaseMode)
+			X0
+			DWELL0 
+		ENDIF
+		
+		; Setup the phase mode to the requested
+		PhaseMode = PhaseModeReq
+		
+		; Move to the new phase
+		X(Q77)
+		DWELL0
+	ELSE
+		; Declare error
+		CS2Error = 1	
+	ENDIF
+CLOSE
+
+; ******************************************************************************
+; Position reporting program
+; ******************************************************************************
+DISABLE PLC PLC_PhasePosReadback
+OPEN PLC PLC_PhasePosReadback CLEAR
+	ADDRESS&2
+
+	P55=M562/(I508*32)
+	P55=P55 + PhaseMotor5Offset
+	
+	P56=M662/(I608*32)
+	P56=P56 + PhaseMotor6Offset
+	
+	P57=M762/(I708*32)
+	P57=P57 + PhaseMotor7Offset
+	
+	P58=M862/(I808*32)
+	P58=P58 + PhaseMotor8Offset
+
+	IF (PhaseMode = ParallelZ2Z3)
+		Q87 = (P56 + P57) / 2
+	ENDIF
+
+	IF (PhaseMode = ParallelZ1Z4)
+		Q87 = (P55 + P58) / 2
+	ENDIF
+
+	IF (PhaseMode = AntiParallelZ2Z3)
+		Q87 = (P56 - P57) / 2
+	ENDIF
+
+	IF (PhaseMode = AntiParallelZ1Z4)
+		Q87 = (P55 - P58) / 2
+	ENDIF
+CLOSE

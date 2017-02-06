@@ -1,0 +1,68 @@
+#include "macro_constants_def.pmc"
+
+CLOSE
+
+; ******************************************************************************
+; Applies new offsets for Gap movement
+; given a request
+; ******************************************************************************
+DISABLE PLC PLC_Calibrate
+OPEN PLC PLC_Calibrate CLEAR
+	; ******************************
+	; Gap calibrate
+	; ******************************	
+	; Ignore change request while moving
+	IF (MovementInProgress=0 AND GapCalibrateReq!=0)
+		; Reference = Encoder + Offset
+		; Encoder = Reference - Offset
+
+
+		; Offset = Reference - Encoder	
+		; For upper motors: Reference = Gap/2 + RefOffset
+		; For lower motors: Reference = Gap/2 - RefOffset	
+		
+		GapMotor1Offset = (ReferenceGap/2) + ReferenceCenter - M162/(I108*32)
+		GapMotor2Offset = (ReferenceGap/2) + ReferenceCenter - M262/(I208*32)
+		GapMotor3Offset = (ReferenceGap/2) - ReferenceCenter - M362/(I308*32)
+		GapMotor4Offset = (ReferenceGap/2) - ReferenceCenter - M462/(I408*32)
+	
+		; Reset request
+		GapCalibrateReq=0
+		
+		; Cause the recalculation of limits through PLC_Limits (PLC 7)
+		MaximumGapPrev=0
+		MinimumGapPrev=0
+	ELSE
+		; Reset request if movement is in progress
+		GapCalibrateReq=0
+	ENDIF
+	
+	
+	; ******************************
+	; Phase calibrate
+	; ******************************	
+	; Ignore change request while moving
+	IF (MovementInProgress=0 AND PhaseCalibrateReq!=0)
+		; Reference = Encoder + Offset
+		; Encoder = Reference - Offset
+
+
+		; Offset = Reference - Encoder	
+	
+		PhaseMotor5Offset = - M562/(I608*32)
+		PhaseMotor6Offset = - M662/(I508*32)
+		PhaseMotor7Offset = - M762/(I708*32)
+		PhaseMotor8Offset = - M862/(I808*32)
+	
+		; Reset request
+		PhaseCalibrateReq=0
+		
+		; Cause the recalculation of limits through PLC_Limits (PLC 7)
+		MaximumEngPhasePrev=0
+	ELSE
+		; Reset request if movement is in progress
+		PhaseCalibrateReq=0
+	ENDIF
+	
+	
+CLOSE

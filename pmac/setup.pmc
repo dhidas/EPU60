@@ -1,0 +1,436 @@
+; ******************************************************************************
+; One time pmac setup
+; ******************************************************************************
+CLOSE
+END GATHER
+DELETE GATHER
+DELETE TRACE
+
+DISABLE PLC 1..31
+
+
+#include "MVariableSetup.pmc"
+
+
+P0..8191=0
+Q0..8191=0
+UNDEFINE ALL
+
+#include "macro_constants_def.pmc"
+
+; Clear cimulation mode
+SimulationMode=0
+
+; Enable Encoder loss protection
+SerialEncProtectionEnabled=1
+
+
+; ********************
+; Setup basic parameters used in programs
+; ********************
+HomingPhase1Dist = 50*1000*6.25 ; Search for trigger for 5 cm
+
+; I36 Enable/Abort Separation Control
+; Make sure the A and Ctrl-A commands do not close the servo loop
+I36=1
+
+; Ixx00 Motor xx Activation Control
+; Disable all motor processing
+I100,8,100 = 0
+
+; I7mn2
+; Servo IC m Channel n Capture Control
+; Capture on Capture (HOME) Flag high
+I7012 = 2
+I7022 = 2
+I7032 = 2
+I7042 = 2
+I7112 = 2
+I7122 = 2
+I7132 = 2
+I7142 = 2
+
+
+; I7mn6 Servo IC m Channel n Output Mode Select
+; Select DAC output
+I7016 = 3
+I7026 = 3
+I7036 = 3
+I7046 = 3
+I7116 = 3
+I7126 = 3
+I7136 = 3
+I7146 = 3
+
+
+; I7mn0 Servo IC m Channel n Encoder/Timer Decode Control
+I7010 = 7
+I7020 = 7
+I7030 = 7
+I7040 = 7
+I7110 = 7
+I7120 = 7
+I7130 = 7
+I7140 = 7
+
+; Ixx01 Motor xx Commutation Enable
+; Disable motor commutation
+I101,32,100 = 0
+
+; Ixx02 Motor xx Command Output Address
+; Set appropriate command output addreses
+I102=$078002
+I202=$07800A
+I302=$078012
+I402=$07801A
+I502=$078102
+I602=$07810A
+I702=$078112
+I802=$07811A
+
+; ********************
+; SETUP BiSS Encoders
+; ********************
+BiSSGlobal1 = $63220B
+BiSSGlobal2 = $63220B
+
+BiSSCh1Ctrl = $21149A
+BiSSCh2Ctrl = $21149A
+BiSSCh3Ctrl = $21149A
+BiSSCh4Ctrl = $21149A
+BiSSCh5Ctrl = $21149A
+BiSSCh6Ctrl = $21149A
+BiSSCh7Ctrl = $21149A
+BiSSCh8Ctrl = $21149A
+
+; ********************
+; SETUP ENCODER TABLE
+; ********************
+
+; Setup first table entries
+I8000 = $2F8B20
+I8002 = $2F8B24
+I8004 = $2F8B28
+I8006 = $2F8B2C
+I8008 = $2F8B30
+I8010 = $2F8B34
+I8012 = $2F8B38
+I8014 = $2F8B3C
+
+; Setup second table entries
+I8001 = $01A000 
+I8003 = $01A000
+I8005 = $01A000
+I8007 = $01A000
+I8009 = $01A000
+I8011 = $01A000
+I8013 = $01A000
+I8015 = $01A000
+
+
+; Setup Exponential filtering entries
+; ALL ENCODERS ARE FILTERED WITH LOW-PASS FILTER
+; Filtering time-constant of 3 servo cycles is set.
+I8016 = $D03502
+I8017 = $162
+I8018 = $200000
+I8019 = $D03504
+I8020 = $162
+I8021 = $200000
+I8022 = $D03506
+I8023 = $162
+I8024 = $200000
+I8025 = $D03508
+I8026 = $162
+I8027 = $200000
+I8028 = $D0350A
+I8029 = $162
+I8030 = $200000
+I8031 = $D0350C
+I8032 = $162
+I8033 = $200000
+I8034 = $D0350E
+I8035 = $162
+I8036 = $200000
+I8037 = $D03510
+I8038 = $162
+I8039 = $200000
+
+; Mark end of the table
+I8040=$0
+I8041=$0
+I8042=$0
+
+; Ixx03 Motor xx Position Loop Feedback Address
+I103 = $3513
+I203 = $3516
+I303 = $3519
+I403 = $351C
+I503 = $351F
+I603 = $3522
+I703 = $3525
+I803 = $3528
+
+; Ixx04 Motor xx Velocity Loop Feedback Address
+I104 = $3513
+I204 = $3516
+I304 = $3519
+I404 = $351C
+I504 = $351F
+I604 = $3522
+I704 = $3525
+I804 = $3528
+
+; Setup motors master addresses for master-slave operation
+Mtr1MasterAddress = Mtr2FltFeedbackAddress
+Mtr2MasterAddress = Mtr1FltFeedbackAddress
+Mtr3MasterAddress = Mtr4FltFeedbackAddress
+Mtr4MasterAddress = Mtr3FltFeedbackAddress
+
+; Ixx07 Motor xx Master (Handwheel) Scale Factor
+; SlavePos = Ixx07/Ixx08 MasterPos 
+; For ideal following on Gap motors this must be equal to Ixx08
+I107,8,100 = 1
+
+; Ixx08 Motor xx Position Scale Factor
+I108,8,100 = 1
+
+; Ixx09 Motor xx Velocity-Loop Scale Factor
+I109,8,100 = 1
+
+; Ixx10 Motor xx Power-On Servo Position Address
+I110 = $78B20
+I210 = $78B24
+I310 = $78B28
+I410 = $78B2C
+I510 = $78B30
+I610 = $78B34
+I710 = $78B38
+I810 = $78B3C
+
+; Ixx11 Motor xx Fatal Following Error Limit 1/16 cts
+; 250 um = 6,25*100*16
+I111,8,100 = 25000
+
+; Ixx12 Motor xx Warning Following Error Limit
+; 150 um = 6,25*75*16
+I112,8,100 = 15000
+
+; Ixx15 Motor xx Abort/Limit Deceleration Rate
+; Designed to stop from full speed (3250um/s) to 0 in 0.1 mm
+; Stopping Time -> T = 2S/V = 2*100/3250 = 0.0615384615
+; Stopping Accel = A = V/T = 3250 / 0.0615384615 = 52812.5 um/s^2 = 0.330078125 cts/ms^2
+I115,8,100 = 0.33
+
+; Ixx16 Motor xx Maximum Program Velocity
+I116,8,100 = GapNormalSpeed	
+
+; Ixx17 Motor xx Maximum Program Acceleration
+I117,8,100 = GapNormalAccel
+
+; Ixx19 Motor xx Maximum Jog/Home Acceleration
+I119,8,100 = GapJogAccel
+
+; Ixx20 Motor xx Jog/Home Acceleration Time
+; Default: 0 (so Ixx21 controls)
+I120,8,100 = 0
+
+; Ixx21 Motor xx Jog/Home S-Curve Time
+; Small 2 ms Do not set zero ixx20 and Ixx21 at same time ! So Ixx19 controls
+I121,8,100 = 2
+
+; Ixx22 Motor xx Jog Speed
+; Set to engineering speed
+I122,8,100 = GapJogSpeed
+
+; Ixx24 Motor xx Flag Mode Control
+; Testing 		I124,8,100 = $02A001
+; Testing, inverted amplifier enable $82A001
+; Production 	I124,8,100 = $80A001
+I124,8,100 =  $80A001
+
+; Ixx25 Motor xx Flag Address
+I125=$078000
+I225=$078008
+I325=$078010
+I425=$078018
+I525=$078100
+I625=$078108
+I725=$078110
+I825=$078118
+
+; Ixx26 Motor xx Home Offset
+I126,8,100 = 0
+
+; Ixx27 Motor xx Position Rollover Range
+I127,8,100 = 0
+
+; Ixx28 Motor xx In-Position Band
+; 2 um
+I128,8,100 = 200 
+
+
+; ******************
+; PID settings
+; ******************
+; Ixx30 Motor xx PID Proportional Gain
+I130,8,100 = 6000000 ; CALIBRATED VALUE
+
+; Ixx31 Motor xx PID Derivative Gain
+I131,8,100 = 0 ; Disable derivative gain for velocity system
+
+; Ixx32 Motor xx PID Velocity Feedforward Gain
+I132,4,100 = 20000 ; Calibrated value
+I532,4,100 = 32000 ; Calibrated value -> Changed from original 40000 as it allows better full speed op. 3250 um/s. Changed at 2nd Cremona visit.
+
+; Ixx33 Motor xx PID Integral Gain
+I133,8,100 = 1280 ; Default
+
+; Ixx34 Motor xx PID Integration Mode
+I134,8,100 = 1 ; Integrator active only at Desired velocity ero
+
+; Ixx35 Motor xx PID Acceleration Feedforward Gain
+I135,8,100 = 0 ; No accel feed forward. Default
+
+; Ixx36 Motor xx PID Notch Filter Coefficient N1
+I136,8,100 = 0 ; No notch filter
+
+; Ixx37 Motor xx PID Notch Filter Coefficient N2
+I137,8,100 = 0 ; No notch filter
+
+; Ixx38 Motor xx PID Notch Filter Coefficient D1
+I138,8,100 = 0 ; No notch filter
+
+; Ixx39 Motor xx PID Notch Filter Coefficient D2
+I139,8,100 = 0 ; No notch filter
+
+; Ixx40 Motor xx Net Desired Position Filter Gain
+; Ixx40 permits the introduction of a first-order low-pass filter on the net desired position for Motor xx.
+; This can be useful to smooth motion that comes from a “rough” source, such as master following from a
+; noisy sensor, or quantization error in very closely spaced programmed points that are commonly found in
+; lookahead applications.
+I140,8,100 = 0 ; NO LOW PASS FILTER
+
+
+; Ixx41 Motor xx Desired Position Limit Band
+I141,8,100 = 0 ; default
+
+; Ixx42 Motor xx Amplifier Flag Address
+I142,8,100=0
+
+; Ixx43 Motor xx Overtravel-Limit Flag Address
+I143,8,100=0
+
+; Ixx59 Motor xx User-Written Servo/Phase Enable
+I159,8,100=0 ; BuiltIn PID / commutation (we don't have commutation)
+
+; Ixx60 Motor xx Servo Cycle Period Extension Period
+I160,8,100=0 ; default
+
+; Ixx63 Motor xx Integration Limit
+I163,8,100=4194304 ; Default. Essentially no limit of the I term in the PID
+
+; Ixx64 Motor xx Deadband Gain Factor
+I164,8,100=0 ; No dead band compensation. Default.
+
+; Ixx65 Motor xx Deadband Size
+I165,8,100 = 0 ; No dear band compensation. Default.
+
+; Ixx67 Motor xx Position Error Limit
+I167,8,100 = $7FFFFF ; Maximum value, compensated for the Ixx08=Ixx09=1 and for the no-shift technique
+
+; Ixx68 Motor xx Friction Feedforward
+I168,8,100 = 0 ; Default. no friction feed forward.
+
+; Ixx69 Motor xx Output Command Limit
+I169,8,100 = 16800 ; CALIBRATED ! Output limit of 16bit analogues DAC (even though we use 18bit) 10V (+/-10 to get +- 20 V differential)
+
+; Ixx80 Motor xx Power-Up Mode
+I180,8,100 = 0 ; Absolute position read ad power up, phasin search irellevant, disabled state on power up
+
+; Ixx85 Motor xx Backlash Take-up Rate
+I185,8,100 = 0 ; Default
+
+; Ixx86 Motor xx Backlash Size
+I186,8,100 = 0 ; Default
+
+; Ixx87 Motor xx Backlash Hysteresis
+I187,8,100 = 64 ; Default
+
+; Ixx88 Motor xx In-Position Number of Scans
+I188,8,100 = 0 ; Default. Feature not used (for now).
+
+; Ixx90 Motor xx Rapid Mode Speed Select
+I190,8,100 = 1 ; Default. Use maximum program velocity Ixx16  for RAPID moves
+
+; Ixx91 Motor xx Power-On Phase Position Format
+I191,8,100 = 0 ; Motor is not phased at PMAC. set to default.
+
+; Ixx92 Motor xx Jog Move Calculation Time
+I192,8,100 = 10 ; 10 ms . Default
+
+;Ixx95 Motor xx Power-On Servo Position Format
+I195,8,100 = $1A0000
+
+; Ixx96 Motor xx Command Output Mode Control
+I196,8,100 = 0 ; Bipolar (signed) output to output register (bit0) Integrator is in the position loop (as oposed to velocity) (bit1)
+
+; Ixx97 Motor xx Position Capture & Trigger Mode
+I197,8,100 = 1 ; Input trigger, software position capture
+
+; Ixx98 Motor xx Third-Resolver Gear Ratio
+I198,8,100 = 0 ; Default. No Triple resolver setup
+
+; Ixx99 Motor xx Second-Resolver Gear Ratio
+I199,8,100 = 0 ; Default. No second resolver.
+
+; Iyy00/50 Motor xx Extended Servo Algorithm Enable
+I3300,4,100 = 0 ; Default disabled 
+I3350,4,100 = 0 
+
+;********************************
+; Apply soft limits
+;********************************
+/*
+	minimum gap in mm = 11.5
+    maximum gap in mm = 240
+    magnet array period length = 49.2
+    maximum operative phase of a single sub-girder in mm = +/- 24.6
+    maximum service phase (sub-girder) offset in either direction in mm = +/- 35
+    number of periods* = 38
+*/
+MaximumGap			= 240000 * 6.25
+MinimumGap			= 11500  * 6.25
+MaximumEngPhase	= 35000  * 6.25
+MaximumOpPhase	= 24600  * 6.25
+
+
+; I5 PLC Program Control
+I5 = 2
+
+; ******************************************************************************
+; Setup coordinate systems
+; ******************************************************************************
+
+&1
+#1->I
+#2->I
+#3->I
+#4->I
+
+
+&2
+#5->I
+#6->I
+#7->I
+#8->I
+
+I5113,2,100 = 40 ; Isx13 Coordinate System x Segmentation Time 
+I5120,2,100 = 50 ; Isx20 Coordinate System x Lookahead Length
+I5150,2,100 = 1  ; Isx50 Coordinate System x Kinematic Calculations Enable
+
+
+; Ixx00 Motor xx Activation Control
+; Enable all motor processing
+I100,8,100 = 1
+

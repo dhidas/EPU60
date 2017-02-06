@@ -1,0 +1,4 @@
+NAME=epu1
+PORT=4051
+HOST=ioc1
+CHDIR=$CHDIR/iocBoot/iocEPU1

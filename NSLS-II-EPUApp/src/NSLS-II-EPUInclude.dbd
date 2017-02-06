@@ -1,0 +1,18 @@
+# base
+include "base.dbd"
+
+include "asyn.dbd"
+include "busySupport.dbd"
+include "calcSupport.dbd"
+include "transformRecord.dbd"
+include "motorSupport.dbd"
+include "pmacAsynIPPort.dbd"
+include "pmacAsynMotor.dbd"
+include "pmacAsynCoord.dbd"
+include "system.dbd"
+include "asSupport.dbd"
+include "devIocStats.dbd"
+include "caPutLog.dbd"
+
+registrar("pmacRegisterDriverRegister")
+#@DBD_INCLUDE@

@@ -1,0 +1,56 @@
+file motorStatus.template 
+{
+	
+	# SYS,DEV: All records are prefixed with $(SYS){$(DEV)}
+	# AXIS: Axis name for the individual motor
+	# PORT: Port name (asyn)
+	# S: Axis number
+	# VELO_CONV_FACT: Velocity convertion factor. V PMAC command returns velocity in cts per cycle
+	#				  To convert this to um/s we multiply by 8388608/I10 to get to cts/ms then we multiply by 1000 to get to cts/s
+	#				  Then we devide by scale factor  (6.25 cts/um) to get to um/s. I10 is typically 3713991 on PMAC2
+	#				  The convertion factor is thus: VELO_CONV_FACT=8388608/3713991*1000/6.25=361.384096
+	# TMOT: asyn timeout (seconds)
+	# SCAN: scan period
+	# OVERHEAT1: Set to NO_ALARM if motor is killed
+	# SWITCH_OFF1: Set to NO_ALARM if motor is switched off
+	# OVERHEAT2: Set to 1 if motor is killed (AmpEN == 0 won't be reported as an error)
+	# SWITCH_OFF2: Set to 1 if motor is switched off
+	# NANO_OVERHEAT: Set to 1 if motor is nano
+	# NANO_SEVR: Set to MAJOR if motor is nano
+	# MOTOR_ERROR1: External motor error 1
+	# MOTOR_ERROR2: External motor error 2
+	# MOTOR_ERROR3: External motor error 3
+	# MOTOR_ERROR4: External motor error 4
+	# ENCPREFIX: PMAC M-variable name prefix for a set of variables that map BiSS encoder status bits
+  # AMPFAULT: PMAC M-variable for the Amplifier Fault bit in the Servo IC
+
+	pattern 
+	{
+		SYS, DEV, AXIS, PORT, S, VELO_CONV_FACT, TMOT, SCAN, OVERHEAT1, SWITCH_OFF1, OVERHEAT2, SWITCH_OFF2, 
+		NANO_OVERHEAT, NANO_SEVR, MOTOR_ERROR1, MOTOR_ERROR2, MOTOR_ERROR3, MOTOR_ERROR4, ENCPREFIX, AMPFAULT, POSLIMIT, NEGLIMIT
+	}
+
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:TU", "PMAC_ETH_PORT", "1", "361.384096", "1", "1 second", "NO_ALARM", "NO_ALARM", "1", "1",
+	 "0", "NO_ALARM", "0", "0", "0", "0", "M93", "M123", "M131", "M132" }
+
+	#{ "SR:C07-ID:G1A", "EPU:1", "Ax:TD", "PMAC_ETH_PORT", "2", "361.384096", "1", "1 second", "NO_ALARM", "NO_ALARM", "1", "1", 
+	#  "0", "NO_ALARM", "0", "0", "0", "0", "M94", "M223", "M231", "M232" }
+
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:BU", "PMAC_ETH_PORT", "3", "361.384096", "1", "1 second", "NO_ALARM", "NO_ALARM", "1", "1",
+	  "0", "NO_ALARM", "0", "0", "0", "0", "M95", "M323", "M331", "M332" }
+
+	#{ "SR:C07-ID:G1A", "EPU:1", "Ax:BD", "PMAC_ETH_PORT", "4", "361.384096", "1", "1 second", "NO_ALARM", "NO_ALARM", "1", "1",
+	#  "0", "NO_ALARM", "0", "0", "0", "0", "M96", "M423", "M431", "M432" }
+
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:TO", "PMAC_ETH_PORT", "5", "361.384096", "1", "1 second", "NO_ALARM", "NO_ALARM", "1", "1",
+	  "0", "NO_ALARM", "0", "0", "0", "0", "M97", "M523", "M531", "M532" }
+
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:TI", "PMAC_ETH_PORT", "6", "361.384096", "1", "1 second", "NO_ALARM", "NO_ALARM", "1", "1",
+	  "0", "NO_ALARM", "0", "0", "0", "0", "M98", "M623", "M631", "M632" }
+
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:BO", "PMAC_ETH_PORT", "7", "361.384096", "1", "1 second", "NO_ALARM", "NO_ALARM", "1", "1",
+	  "0", "NO_ALARM", "0", "0", "0", "0", "M99", "M723", "M731", "M732" }
+
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:BI", "PMAC_ETH_PORT", "8", "361.384096", "1", "1 second", "NO_ALARM", "NO_ALARM", "1", "1",
+	  "0", "NO_ALARM", "0", "0", "0", "0", "M100", "M823", "M831", "M832" }  
+}

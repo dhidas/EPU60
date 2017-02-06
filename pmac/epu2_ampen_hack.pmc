@@ -1,0 +1,21 @@
+#include "macro_constants_def.pmc"
+
+; *********************************************************************
+; This PLCC mimics the Amplifier 8 enable bit on GPO3 in order
+; to mitigate the hardware problem on the Amplifier Enable line for motor 8
+; on the brick controller for the EPU2
+; *********************************************************************
+
+
+L35->Y:$078802,2,1 ; 	Output 3 J6 	Pin#14 		Pin#32
+L839->X:$000430,19,1 ; #8 Amplifier-enabled status bit
+
+#define Amp8Output 			L35
+#define Amp8EnableBit		L839
+
+CLOSE
+OPEN PLCC 1 CLEAR
+	IF (Amp8Output!=Amp8EnableBit)
+		Amp8Output = Amp8EnableBit
+	ENDIF
+CLOSE

@@ -1,0 +1,41 @@
+#include "macro_constants_def.pmc"
+
+; Redefine M34 which is supposed to be Output PIN2 to point to Output PIN3 , because of different wiring on EPU2
+M34->Y:$078802,2,1 ; 	Output 3 J6 	Pin#14 		Pin#32
+
+; ************************
+; Calibrated offsets
+;
+; Updated 20.6.2013 with information sent from Kyma by Luka Belingar
+; ************************
+GapMotor1Offset		= -332507.25
+GapMotor2Offset		= -335910.9375
+GapMotor3Offset		= -339992.5312
+GapMotor4Offset		= -339142.5937
+PhaseMotor5Offset	= -411976.6562
+PhaseMotor6Offset	= -396794.875
+PhaseMotor7Offset	= -396719.75
+PhaseMotor8Offset	= -410161.1562
+
+; ***********************
+; Home switch positions 
+;
+; Updated 20.6.2013 with information sent from Kyma by Luka Belingar
+; ***********************
+GapMotor1HomePosition = 1002161.5625
+GapMotor2HomePosition = 1005678.5313
+GapMotor3HomePosition = 1000887.0938
+GapMotor4HomePosition = 999945.875
+
+
+; Ixx29 Motor xx Output/First Phase Offset
+; Manual offset to get close to zero, to calibrated values
+; For Device 1
+I129 = 0
+I229 = 0
+I329 = 0
+I429 = 0
+I529 = 0
+I629 = 0
+I729 = -36
+I829 = -44

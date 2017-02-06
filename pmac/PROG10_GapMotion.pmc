@@ -1,0 +1,147 @@
+#include "macro_constants_def.pmc"
+
+
+; ******************************************************************************
+; GAP Inverse and Forward kinematics, motion program and position reporting PLC
+;
+; Make sure: Isx13 Segmentation time is setup
+;            Isx50 Coordinate System x Kinematic Calculations Enable
+;
+; ******************************************************************************
+
+CLOSE
+END GATHER
+DELETE GATHER
+DELETE TRACE
+
+; ******************************************************************************
+; Gap Forward kinematic
+; ******************************************************************************
+&1 OPEN FORWARD Clear
+	; Q7 - X - GAP
+	; Q8 - Y - CENTER OFFSET
+	; Q9 - Z - TAPER
+
+	; Compensate for the offsets
+	Q201 = P1 + GapMotor1Offset
+	Q202 = P2 + GapMotor2Offset
+	Q203 = P3 + GapMotor3Offset
+	Q204 = P4 + GapMotor4Offset
+
+	Q7=(Q201+Q202+Q203+Q204)/2
+	Q8=(Q201+Q202-Q203-Q204)/4
+	Q9=Q201-Q202+Q203-Q204
+CLOSE
+
+
+; ******************************************************************************
+; Gap Inverse kinematic
+; ******************************************************************************
+&1 OPEN INVERSE Clear
+	; Q7 - X - GAP
+	; Q8 - Y - CENTER OFFSET
+	; Q9 - Z - TAPER
+
+	Q100 = Q7/2 ; Gap term
+	Q101 = Q9/4 ; Taper term
+	Q102 = Q8   ; Center Offset term
+
+	; Calculate motor positions and apply offsets
+	P1 = Q100 + Q101 + Q102 - GapMotor1Offset
+	P2 = Q100 - Q101 + Q102 - GapMotor2Offset
+	P3 = Q100 + Q101 - Q102 - GapMotor3Offset
+	P4 = Q100 - Q101 - Q102 - GapMotor4Offset
+CLOSE
+
+
+; ******************************************************************************
+; Gap Motion program
+; ******************************************************************************
+&1 OPEN PROG 10 CLEAR
+	
+	; Select mode
+	LINEARABS
+	
+	; Prevent movement while interlock active
+	IF (InterlockState=0 AND StopAll=0 AND UpperGirderMode=GapCoordinated AND LowerGirderMode=GapCoordinated)
+		; Clear error bit
+		CS1Error = 0	
+
+		; *******************************
+		; Move to zero taper
+		; *******************************
+		; Feedrate calculated by only Z-taper axis
+		FRAX(Z)
+		; Time to taper speed in ms. Corresponds to nominal acceleration
+		I5187=350
+		; Taper speed is 4 times individual motor speed, adjusted for time units
+		F(4*GapJogSpeed*I5190) 
+		; Go to zero tapper
+		Z(0)
+		DWELL50
+	
+		; *******************************
+		; Move to new gap/center. 
+		; *******************************
+		; Time to speed from EPICS in s
+		TA(GapAccel*1000)
+		; Feedrate calculated by only X-gap axis
+		FRAX(X)
+		
+		; Use gap speed as coming from EPICS
+		F(GapVelocity) 
+		
+		; Go to new center offset and gap
+		X(Q77)Y(CoordinatedCenterOffset)
+		DWELL50
+	
+		; *******************************
+		; Go to new taper
+		; *******************************
+		; Feedrate calculated by only Z-taper axis
+		FRAX(Z)
+		; Time to taper speed in ms. Corresponds to nominal acceleration
+		I5187=350
+		; Taper speed is 4 times individual motor speed, adjusted for time units
+		F(4*GapJogSpeed*I5190) 
+		; Go to requested taper
+		Z(CoordinatedTaper)
+		DWELL50
+	ELSE
+		CS1Error = 1 ; Declare error on the CS
+	ENDIF
+CLOSE
+
+; ******************************************************************************
+; Position reporting program
+; ******************************************************************************
+DISABLE PLC PLC_GapPosReadback
+OPEN PLC PLC_GapPosReadback CLEAR
+	ADDRESS&1
+
+	P51=M162/(I108*32)
+	P51=P51 + GapMotor1Offset
+	
+	P52=M262/(I208*32)
+	P52=P52 + GapMotor2Offset
+	
+	P53=M362/(I308*32)
+	P53=P53 + GapMotor3Offset
+	
+	P54=M462/(I408*32)
+	P54=P54 + GapMotor4Offset
+	
+	Q87=(P51+P52+P53+P54)/2
+	
+	Q88=(P51+P52-P53-P54)/4
+	MeasuredCenterOffset = Q88 ; Save it P variable for reading in EPICS
+	
+	; Calculate individual girder taper and save it in P variables
+	UpperTaper = P51-P52
+	LowerTaper = P53-P54
+	
+	Q89=UpperTaper+LowerTaper
+	MeasuredTaper = Q89 ; Save it in P variable for reading in EPCIS
+	
+	
+CLOSE

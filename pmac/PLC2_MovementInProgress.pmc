@@ -1,0 +1,53 @@
+#include "macro_constants_def.pmc"
+
+; ******************************************************************************
+; PLC 2 - PLC_MovementInProgress
+; 
+; Checks if there is movement on any of the motors / or coordinate systems
+; sets MovementInProgress if there is any movement
+;
+; Also handles the lights.
+; ******************************************************************************
+CLOSE 
+
+DISABLE PLC PLC_MovementInProgress
+OPEN PLC PLC_MovementInProgress CLEAR
+	; Check if there is movement commanded / motion program running	
+	IF (Mtr1Moving=1)
+	OR (Mtr2Moving=1)
+	OR (Mtr3Moving=1)
+	OR (Mtr4Moving=1)
+	OR (Mtr5Moving=1)
+	OR (Mtr6Moving=1)
+	OR (Mtr7Moving=1)
+	OR (Mtr8Moving=1)
+	OR (CS1Running=1)
+	OR (CS2Running=1)
+		MovementInProgress=1
+		MotorMovingLight=1
+	ELSE
+		MovementInProgress=0
+		MotorMovingLight=0
+	ENDIF
+	
+	; Check if amplifiers are disabled
+	IF (Amp1Enabled=1)
+	OR (Amp2Enabled=1)
+	OR (Amp3Enabled=1)
+	OR (Amp4Enabled=1)
+	OR (Amp5Enabled=1)
+	OR (Amp6Enabled=1)
+	OR (Amp7Enabled=1)
+	OR (Amp8Enabled=1)
+		BrakesAppliedLight=0
+		
+		; StopAll was requested, but somehow amplifier got enabled
+		; Cycle StopAll to kill all motors again
+		IF (StopAllReq=1 AND StopAll=1)
+			StopAll=0
+		ENDIF
+	ELSE
+		BrakesAppliedLight=1
+	ENDIF
+	
+CLOSE

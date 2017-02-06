@@ -1,0 +1,340 @@
+; ******************************************************************************
+; Macro variable and constant definitions
+; ******************************************************************************
+close
+delete gather
+
+
+; *******************************************************
+; Setup speed and acceleration constants used in programs
+; *******************************************************
+; Gap normal (operator) motor speed in cts/ms = 3.25 mm/s
+#define GapNormalSpeed		20.3125  
+; Gap normal (operator) motor maximum allowed acceleration in cts/ms^2
+#define GapNormalAccel		0.028547 
+; Gap engineering moves motor speed in cts/ms = 0.5 mm / s
+#define GapJogSpeed 		3.125 	 
+; Quater normal accel. cts/ms^2
+#define GapJogAccel 		0.001784 
+; No-zero taper treshold on operator gap movements if taper is under NoTaperMoveDelta in cts -> 20 um
+#define NoTaperMoveDelta	125 
+
+#define GapMinSpeed			0.25
+#define GapMinAccel 		0.001784
+; Orig 		 
+;#define GapMinSpeed			0.0625
+;#define GapMinAccel 		0.001784 ; Quater the normal
+
+#define PGainCalibrated			6000000		; calibrated P gain for normal operation
+#define PGainAttenuated			2000000		; attenuaded P gain for position following
+
+; ******************************************************************************
+; Filtered feedback address
+; ******************************************************************************
+#define Mtr1FltFeedbackAddress $3513
+#define Mtr2FltFeedbackAddress $3516
+#define Mtr3FltFeedbackAddress $3519
+#define Mtr4FltFeedbackAddress $351C
+
+; ******************************************************************************
+; Girder modes
+; ******************************************************************************
+#define GapCoordinated 		0
+#define LeftMotorMaster		1
+#define RightMotorMaster	2
+#define IndividualMotor		3
+
+; ******************************************************************************
+; Phase modes
+; O - outer (far from frame)
+; I - inner (near the frame)
+;
+;
+; TO TI            Z1   Z2
+; BO BI            Z3   Z4
+;
+;
+; ******************************************************************************
+#define ParallelTIBO 		0
+#define ParallelZ2Z3 		0
+
+#define ParallelTOBI		1
+#define ParallelZ1Z4		1
+
+#define AntiParallelTIBO 		2
+#define AntiParallelZ2Z3 		2
+
+#define AntiParallelTOBI		3
+#define AntiParallelZ1Z4		3
+
+
+; ******************************************************************************
+; PLC Names
+; ******************************************************************************
+#define PLC_Initialization			1
+#define PLC_MovementInProgress	2
+#define PLC_Interlock						3
+#define PLC_OpenGap							4
+#define PLC_Homing							5
+#define PLC_EncoderLoss					6
+#define PLC_Limits							7
+#define PLC_MoveRequest					8
+#define PLC_KillMotors					9
+#define PLC_GapPosReadback			10
+#define PLC_PhasePosReadback		12
+#define PLC_ModeChange					20
+#define PLC_Calibrate						21
+
+; ******************************************************************************
+; Global state variables
+; ******************************************************************************
+#define SimulationMode					P100	; Indicates that we are in simulation mode 
+
+#define MovementInProgress      P200	; Movement is in progress
+
+#define UpperGirderModeReq      P201	; Upper girder mode setpoint	
+#define UpperGirderMode         P202	; Upper girder mode readback
+#define LowerGirderModeReq      P203	; Lower girder mode setpoint
+#define LowerGirderMode         P204	; Lower girder mode readback
+
+#define CoordinatedCenterOffset	P206	; Offset from the zero position for Gap coordinated movements
+#define CoordinatedTaper				P207  ; Taper for Gap coordinated movements
+#define MeasuredCenterOffset		P208	; Reported center offset
+#define MeasuredTaper						P209	; Reported taper
+#define UpperTaper							P210  ; Reported upper girder tapper (difference on positions on upper girder)
+#define LowerTaper							P211	; Reported lower girder tapper (difference on positions on lower girder)
+
+#define DisableLimitsReq	P221	; Request to disable software limits on all motors
+#define LimitsDisabled		P222	; Limits-disabled status
+
+#define StopAllReq				P300  ; Request stop all
+#define StopAll						P301  ; Stop all active
+
+#define PhaseModeReq		P401		; Requested phase mode
+#define PhaseMode				P402		; Actual phase mode
+
+#define OpenGapExecuting	P411		; Open gap is being executed
+
+#define InterlockState 		P421		; Signals that we are in interlock state. Do not issue movements.
+
+#define GapMotor1Offset		P1011		; Gap motor 1 TU offset
+#define GapMotor2Offset		P1012		; Gap motor 2 TD offset
+#define GapMotor3Offset		P1013		; Gap motor 3 BU offset
+#define GapMotor4Offset		P1014		; Gap motor 4 BD offset
+#define PhaseMotor5Offset	P1015		; Phase (motor 5) 
+#define PhaseMotor6Offset	P1016		; Phase (motor 6) 
+#define PhaseMotor7Offset	P1017		; Phase (motor 7) 
+#define PhaseMotor8Offset	P1018		; Phase (motor 8) 
+
+#define ReferenceGap			P1021		; Reference gap for calibrating
+#define ReferenceCenter		P1022		; Reference offset for calibrating
+#define GapCalibrateReq		P1023		; Request recalibration of offsets
+#define PhaseCalibrateReq	P1024		; Request recalibration of phase offsets
+
+#define MaximumGap				P1031			; Minimum gap position
+#define MinimumGap				P1032			; Maximum gap position
+#define MaximumEngPhase 	P1033			; Maximum phase position
+#define MaximumOpPhase    P1034 		; Maximum user phase 
+
+#define MaximumGapPrev 		P1036			; Last minimum gap position
+#define MinimumGapPrev 		P1037			; Last maximum gap position
+#define MaximumEngPhasePrev P1038		; Last maximum phase position
+#define MaximumOpPhasePrev 	P1039		; Last maximum user phase
+
+
+#define GapMotor1HomePosition	P1041			; Capture register contents during last home for motor 1
+#define GapMotor2HomePosition	P1042			; Capture register contents during last home for motor 2
+#define GapMotor3HomePosition	P1043			; Capture register contents during last home for motor 3
+#define GapMotor4HomePosition	P1044			; Capture register contents during last home for motor 4
+
+#define HomingPhase1Dist		P1045			; Move from limit switch to below the home switch
+#define HomingPhase2Dist		P1046			; Distance to move towards the limit switch while home-searching
+
+#define GapMotor1HomeReference	P1051			; Manually measured position of the home switch for motor 1
+#define GapMotor2HomeReference	P1052			; Manually measured position of the home switch for motor 2
+#define GapMotor3HomeReference	P1053			; Manually measured position of the home switch for motor 3
+#define GapMotor4HomeReference	P1054			; Manually measured position of the home switch for motor 4
+
+#define MotorHomeRequest		P1055			; 1-4 request homing for motor. 0 no home
+#define MotorHomeStatus			P1056			; 1-4 motor being homed
+
+#define StopMotor1				P1061			; Command to stop the motor 1
+#define StopMotor2				P1062			; Command to stop the motor 2
+#define StopMotor3				P1063			; Command to stop the motor 3
+#define StopMotor4				P1064			; Command to stop the motor 4
+#define StopMotor5				P1065			; Command to stop the motor 5
+#define StopMotor6				P1066			; Command to stop the motor 6
+#define StopMotor7				P1067			; Command to stop the motor 7
+#define StopMotor8				P1068			; Command to stop the motor 8
+
+#define SerialEncProtectionEnabled		P1103	; If 1 all motors will be killed if encoder error is detected
+
+#define GapMoveReq			P1111	; Set to 1 to request gap movement to the GapSetpoint
+#define GapSetpoint			P1112	; Setpoing for new gap movement
+#define CS1RunningPrev	P1113	; CS1Running flag previous value
+#define GapVelocity			P1114 ; Gap velocity
+#define GapAccel 			 	P1115 ; Gap accel
+                               
+#define PhaseMoveReq		P1116	; Set to 1 to request gap movement to the PhaseSetpoint
+#define PhaseSetpoint		P1117	; Setpoint for new phase offset
+#define CS2RunningPrev	P1118	; CS1Running flag previous value
+#define PhaseVelocity		P1119 ; Phase velocity
+#define PhaseAccel 			P1120 ; Phase accel
+
+; ******************************************************************************
+; M variables state
+; ******************************************************************************
+#define OpenGapSignal			M17	
+#define Interlock 				M20	
+#define InterlockOverride 		M23	
+
+#define MotorMovingLight		M33		; Motor moving light
+#define BrakesAppliedLight		M34		; Brakes applied light
+
+#define Motor1ResetFault  M41 ; Motor 1 Reset Fault Output
+#define Motor2ResetFault  M42 ; Motor 2 Reset Fault Output
+#define Motor3ResetFault  M43 ; Motor 3 Reset Fault Output
+#define Motor4ResetFault  M44 ; Motor 4 Reset Fault Output
+#define Motor5ResetFault  M45 ; Motor 5 Reset Fault Output
+#define Motor6ResetFault  M46 ; Motor 6 Reset Fault Output
+#define Motor7ResetFault  M47 ; Motor 7 Reset Fault Output
+#define Motor8ResetFault  M48 ; Motor 8 Reset Fault Output
+
+
+#define BiSSGlobal1		M95			; BiSS Global Control Register 1
+#define BiSSGlobal2		M96			; BiSS Global Control Register 2
+
+#define BiSSCh1Ctrl		M901		; BiSS Channel 1 Control register
+#define BiSSCh2Ctrl		M902		; BiSS Channel 2 Control register
+#define BiSSCh3Ctrl		M903		; BiSS Channel 3 Control register
+#define BiSSCh4Ctrl		M904		; BiSS Channel 4 Control register
+#define BiSSCh5Ctrl		M905		; BiSS Channel 5 Control register
+#define BiSSCh6Ctrl		M906		; BiSS Channel 6 Control register
+#define BiSSCh7Ctrl		M907		; BiSS Channel 7 Control register
+#define BiSSCh8Ctrl		M908		; BiSS Channel 8 Control register
+
+
+#define Mtr1Moving		M137		; Motor 1 moving
+#define Mtr2Moving		M237		; Motor 2 moving
+#define Mtr3Moving		M337		; Motor 3 moving
+#define Mtr4Moving		M437		; Motor 4 moving
+#define Mtr5Moving		M537		; Motor 5 moving
+#define Mtr6Moving		M637		; Motor 6 moving
+#define Mtr7Moving		M737		; Motor 7 moving
+#define Mtr8Moving		M837		; Motor 8 moving
+
+#define Amp1Enabled		M139		; Amplifier 1 enabled
+#define Amp2Enabled		M239		; Amplifier 2 enabled
+#define Amp3Enabled		M339		; Amplifier 3 enabled
+#define Amp4Enabled		M439		; Amplifier 4 enabled
+#define Amp5Enabled		M539		; Amplifier 5 enabled
+#define Amp6Enabled		M639		; Amplifier 6 enabled
+#define Amp7Enabled		M739		; Amplifier 7 enabled
+#define Amp8Enabled		M839		; Amplifier 8 enabled
+		
+#define CS1Running		M5180		; Coordinate system 1 running program
+#define CS2Running		M5280		; Coordinate system 2 running program
+#define CS3Running		M5380		; Coordinate system 3 running program
+#define CS4Running		M5480		; Coordinate system 4 running program
+#define CS5Running		M5580		; Coordinate system 5 running program
+#define CS6Running		M5680		; Coordinate system 6 running program
+#define CS7Running		M5780		; Coordinate system 7 running program
+#define CS8Running		M5880		; Coordinate system 8 running program
+
+#define CS1Error		M5182		; Coordinate system 1 error bit
+#define CS2Error		M5282		; Coordinate system 2 error bit
+#define CS3Error		M5382		; Coordinate system 3 error bit
+#define CS4Error		M5482		; Coordinate system 4 error bit
+#define CS5Error		M5582		; Coordinate system 5 error bit
+#define CS6Error		M5682		; Coordinate system 6 error bit
+#define CS7Error		M5782		; Coordinate system 7 error bit
+#define CS8Error		M5882		; Coordinate system 8 error bit
+
+
+; ******************************************************************************
+; I variables names
+; ******************************************************************************
+#define Mtr1PosFeedbackAddress		I103		; Motor 1 Position Feedback address
+#define Mtr2PosFeedbackAddress		I203		; Motor 2 Position Feedback address
+#define Mtr3PosFeedbackAddress		I303		; Motor 3 Position Feedback address
+#define Mtr4PosFeedbackAddress		I403		; Motor 4 Position Feedback address
+#define Mtr5PosFeedbackAddress		I503		; Motor 5 Position Feedback address
+#define Mtr6PosFeedbackAddress		I603		; Motor 6 Position Feedback address
+#define Mtr7PosFeedbackAddress		I703		; Motor 7 Position Feedback address
+#define Mtr8PosFeedbackAddress		I803		; Motor 8 Position Feedback address
+		
+#define Mtr1MasterAddress		I105		; Motor 1 Position Master address
+#define Mtr2MasterAddress		I205		; Motor 2 Position Master address
+#define Mtr3MasterAddress		I305		; Motor 3 Position Master address
+#define Mtr4MasterAddress		I405		; Motor 4 Position Master address
+#define Mtr5MasterAddress		I505		; Motor 5 Position Master address
+#define Mtr6MasterAddress		I605		; Motor 6 Position Master address
+#define Mtr7MasterAddress		I705		; Motor 7 Position Master address
+#define Mtr8MasterAddress		I805		; Motor 8 Position Master address
+		
+#define Mtr1FollowingEnable		I106		; Motor 1 Following enable
+#define Mtr2FollowingEnable		I206		; Motor 2 Following enable
+#define Mtr3FollowingEnable		I306		; Motor 3 Following enable
+#define Mtr4FollowingEnable		I406		; Motor 4 Following enable
+#define Mtr5FollowingEnable		I506		; Motor 5 Following enable
+#define Mtr6FollowingEnable		I606		; Motor 6 Following enable
+#define Mtr7FollowingEnable		I706		; Motor 7 Following enable
+#define Mtr8FollowingEnable		I806		; Motor 8 Following enable
+
+#define Mtr1JogSpeed		I122		; Motor 1 Jog speed
+#define Mtr2JogSpeed		I222		; Motor 2 Jog speed
+#define Mtr3JogSpeed		I322		; Motor 3 Jog speed
+#define Mtr4JogSpeed		I422		; Motor 4 Jog speed
+#define Mtr5JogSpeed		I522		; Motor 5 Jog speed
+#define Mtr6JogSpeed		I622		; Motor 6 Jog speed
+#define Mtr7JogSpeed		I722		; Motor 7 Jog speed
+#define Mtr8JogSpeed		I822		; Motor 8 Jog speed
+
+#define Mtr1JogAccel		I119		; Motor 1 Jog acceleration time
+#define Mtr2JogAccel		I219		; Motor 2 Jog acceleration time
+#define Mtr3JogAccel		I319		; Motor 3 Jog acceleration time
+#define Mtr4JogAccel		I419		; Motor 4 Jog acceleration time
+#define Mtr5JogAccel		I519		; Motor 5 Jog acceleration time
+#define Mtr6JogAccel		I619		; Motor 6 Jog acceleration time
+#define Mtr7JogAccel		I719		; Motor 7 Jog acceleration time
+#define Mtr8JogAccel		I819		; Motor 8 Jog acceleration time
+
+#define Mtr1ProgSpeed		I116		; Motor 1 maximum program velocity
+#define Mtr2ProgSpeed		I216		; Motor 2 maximum program velocity
+#define Mtr3ProgSpeed		I316		; Motor 3 maximum program velocity
+#define Mtr4ProgSpeed		I416		; Motor 4 maximum program velocity
+#define Mtr5ProgSpeed		I516		; Motor 5 maximum program velocity
+#define Mtr6ProgSpeed		I616		; Motor 6 maximum program velocity
+#define Mtr7ProgSpeed		I716		; Motor 7 maximum program velocity
+#define Mtr8ProgSpeed		I816		; Motor 8 maximum program velocity
+
+#define Mtr1ProgAccel		I117		; Motor 1 maximum program acceleration
+#define Mtr2ProgAccel		I217		; Motor 2 maximum program acceleration
+#define Mtr3ProgAccel		I317		; Motor 3 maximum program acceleration
+#define Mtr4ProgAccel		I417		; Motor 4 maximum program acceleration
+#define Mtr5ProgAccel		I517		; Motor 5 maximum program acceleration
+#define Mtr6ProgAccel		I617		; Motor 6 maximum program acceleration
+#define Mtr7ProgAccel		I717		; Motor 7 maximum program acceleration
+#define Mtr8ProgAccel		I817		; Motor 8 maximum program acceleration
+
+
+#define Mtr1PGain			I130		; Motor 1 P Gain for the PID controller
+#define Mtr2PGain			I230		; Motor 2 P Gain for the PID controller
+#define Mtr3PGain			I330		; Motor 3 P Gain for the PID controller
+#define Mtr4PGain			I430		; Motor 4 P Gain for the PID controller
+#define Mtr5PGain			I530		; Motor 5 P Gain for the PID controller
+#define Mtr6PGain			I630		; Motor 6 P Gain for the PID controller
+#define Mtr7PGain			I730		; Motor 7 P Gain for the PID controller
+#define Mtr8PGain			I830		; Motor 8 P Gain for the PID controller
+
+
+
+
+; ******************************************************************************
+; SOFTWARE SIMULATION. Uncommment section below to use P variables instead of hardware signals
+; ******************************************************************************
+/*
+#define Interlock 					P422
+#define InterlockOverride 	P423
+#define OpenGapSignal				P431
+*/

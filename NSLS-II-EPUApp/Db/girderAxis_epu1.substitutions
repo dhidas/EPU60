@@ -1,0 +1,20 @@
+file girderAxis.template 
+{
+
+	# SYS,DEV: All records are prefixed with $(SYS){$(DEV)}
+	# AXIS: Axis name for the girder
+	# PMACPORT: Port name used in asyn records
+	# PMACVARSP: PMAC variable to set axis mode
+	# PMACVARRB: PMAC variable to read actual setting
+	# TILTVAR: PMAC variable indicating tilted girder status
+	# TAPERVAR: PMAC variable indicating individual girder taper
+	# CTS_PER_EGU: PMAC counts in one EGU (um)
+
+	pattern
+	{ 
+		SYS, DEV, AXIS, PMACPORT, PMACVARSP, PMACVARRB, TILTVAR, TAPERVAR, CTS_PER_EGU
+	}
+
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:T", "PMAC_ETH_PORT", "P201", "P202", "M18", "P210", "6.25" }
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:B", "PMAC_ETH_PORT", "P203", "P204", "M19", "P211", "6.25" }
+}

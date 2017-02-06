@@ -1,0 +1,27 @@
+file phase.template 
+{
+
+	# SYS,DEV: All records are prefixed with $(SYS){$(DEV)}
+	# AXIS: Phase axis name
+	# PMACPORT: Port name used in asyn records
+	# COORDPORT: Port for the Coordinate System PMAC axis
+	# S: Axis number - X is 6
+	# MRES: Scale factor for the size units. Depends on pmacSetCoordStepsPerUnit param 3: MRES = 1/PARAM_3/CTS_PER_EGU. 
+	# VELOCITY: Velocity of movement in um/s
+	# ACCEL: Acceleration - time to full velocity in seconds 
+	# CTS_PER_EGU: PMAC counts in one EGU (um)
+
+	pattern
+    {
+		SYS, DEV, AXIS, PMACPORT, 
+		COORDPORT, S, MRES, VELOCITY, ACCEL, CTS_PER_EGU 
+	}
+		
+    { 
+		"SR:C07-ID:G1A", "EPU:1", "Ax:Phase", "PMAC_ETH_PORT", 
+		"PMAC-PHASE", "6", "0.01", "3250", "2.85", "1"
+	}
+}
+
+
+

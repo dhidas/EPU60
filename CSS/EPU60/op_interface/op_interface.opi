@@ -1,0 +1,4237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display typeId="org.csstudio.opibuilder.Display" version="1.0.0">
+  <show_close_button>true</show_close_button>
+  <rules />
+  <wuid>652615a6:14836c5e2df:-7408</wuid>
+  <show_grid>true</show_grid>
+  <auto_zoom_to_fit_all>false</auto_zoom_to_fit_all>
+  <scripts />
+  <height>750</height>
+  <macros>
+    <include_parent_macros>true</include_parent_macros>
+  </macros>
+  <boy_version>4.0.103.201508281950</boy_version>
+  <show_edit_range>true</show_edit_range>
+  <widget_type>Display</widget_type>
+  <auto_scale_widgets>
+    <auto_scale_widgets>false</auto_scale_widgets>
+    <min_width>-1</min_width>
+    <min_height>-1</min_height>
+  </auto_scale_widgets>
+  <background_color>
+    <color red="240" green="240" blue="240" />
+  </background_color>
+  <width>900</width>
+  <x>-1</x>
+  <name>$(dev) Op Mode</name>
+  <grid_space>6</grid_space>
+  <show_ruler>true</show_ruler>
+  <y>-1</y>
+  <snap_to_geometry>true</snap_to_geometry>
+  <foreground_color>
+    <color red="192" green="192" blue="192" />
+  </foreground_color>
+  <actions hook="false" hook_all="false" />
+  <widget typeId="org.csstudio.opibuilder.widgets.Image" version="1.0.0">
+    <border_style>0</border_style>
+    <tooltip></tooltip>
+    <rules />
+    <crop_left>0</crop_left>
+    <enabled>true</enabled>
+    <wuid>-3e4bd068:1485b8226f9:-75b7</wuid>
+    <auto_size>false</auto_size>
+    <image_file>../../../Operations/Images/NSLS2blue.png</image_file>
+    <scripts />
+    <height>50</height>
+    <border_width>1</border_width>
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <align_to_nearest_second>false</align_to_nearest_second>
+    <visible>true</visible>
+    <crop_bottom>0</crop_bottom>
+    <degree>0</degree>
+    <border_color>
+      <color red="0" green="128" blue="255" />
+    </border_color>
+    <no_animation>false</no_animation>
+    <widget_type>Image</widget_type>
+    <flip_horizontal>false</flip_horizontal>
+    <background_color>
+      <color red="240" green="240" blue="240" />
+    </background_color>
+    <permutation_matrix>
+      <row>
+        <col>1.0</col>
+        <col>0.0</col>
+      </row>
+      <row>
+        <col>0.0</col>
+        <col>1.0</col>
+      </row>
+    </permutation_matrix>
+    <width>900</width>
+    <x>0</x>
+    <name>Image_1</name>
+    <y>0</y>
+    <foreground_color>
+      <color red="192" green="192" blue="192" />
+    </foreground_color>
+    <actions hook="false" hook_all="false" />
+    <crop_top>0</crop_top>
+    <crop_right>0</crop_right>
+    <stretch_to_fit>true</stretch_to_fit>
+    <flip_vertical>false</flip_vertical>
+    <font>
+      <opifont.name fontName="Sans" height="10" style="0">Default</opifont.name>
+    </font>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.Image" version="1.0.0">
+    <border_style>0</border_style>
+    <tooltip></tooltip>
+    <rules />
+    <crop_left>0</crop_left>
+    <enabled>true</enabled>
+    <wuid>-3e4bd068:1485b8226f9:-75b6</wuid>
+    <auto_size>false</auto_size>
+    <image_file>../../../Operations/Images/NSLS2logo.png</image_file>
+    <scripts />
+    <height>50</height>
+    <border_width>1</border_width>
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <align_to_nearest_second>false</align_to_nearest_second>
+    <visible>true</visible>
+    <crop_bottom>0</crop_bottom>
+    <degree>0</degree>
+    <border_color>
+      <color red="0" green="128" blue="255" />
+    </border_color>
+    <no_animation>false</no_animation>
+    <widget_type>Image</widget_type>
+    <flip_horizontal>false</flip_horizontal>
+    <background_color>
+      <color red="240" green="240" blue="240" />
+    </background_color>
+    <permutation_matrix>
+      <row>
+        <col>1.0</col>
+        <col>0.0</col>
+      </row>
+      <row>
+        <col>0.0</col>
+        <col>1.0</col>
+      </row>
+    </permutation_matrix>
+    <width>250</width>
+    <x>0</x>
+    <name>Image</name>
+    <y>0</y>
+    <foreground_color>
+      <color red="192" green="192" blue="192" />
+    </foreground_color>
+    <actions hook="false" hook_all="false" />
+    <crop_top>0</crop_top>
+    <crop_right>0</crop_right>
+    <stretch_to_fit>true</stretch_to_fit>
+    <flip_vertical>false</flip_vertical>
+    <font>
+      <opifont.name fontName="Sans" height="10" style="0">Default</opifont.name>
+    </font>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+    <border_style>0</border_style>
+    <tooltip></tooltip>
+    <horizontal_alignment>1</horizontal_alignment>
+    <rules />
+    <enabled>true</enabled>
+    <wuid>-3e4bd068:1485b8226f9:-75b5</wuid>
+    <transparent>true</transparent>
+    <auto_size>false</auto_size>
+    <text>$(dev) Operational Mode</text>
+    <scripts />
+    <height>50</height>
+    <border_width>1</border_width>
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <visible>true</visible>
+    <vertical_alignment>1</vertical_alignment>
+    <border_color>
+      <color red="0" green="128" blue="255" />
+    </border_color>
+    <widget_type>Label</widget_type>
+    <wrap_words>true</wrap_words>
+    <background_color>
+      <color red="255" green="255" blue="255" />
+    </background_color>
+    <width>600</width>
+    <x>250</x>
+    <name>Label_1</name>
+    <y>0</y>
+    <foreground_color>
+      <color red="255" green="255" blue="255" />
+    </foreground_color>
+    <actions hook="false" hook_all="false" />
+    <show_scrollbar>false</show_scrollbar>
+    <font>
+      <fontdata fontName="Sans" height="18" style="1" />
+    </font>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
+    <border_style>13</border_style>
+    <tooltip></tooltip>
+    <rules />
+    <enabled>true</enabled>
+    <wuid>-3e4bd068:1485b8226f9:-75ae</wuid>
+    <transparent>false</transparent>
+    <lock_children>false</lock_children>
+    <scripts />
+    <height>223</height>
+    <border_width>1</border_width>
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <macros>
+      <include_parent_macros>true</include_parent_macros>
+    </macros>
+    <visible>true</visible>
+    <border_color>
+      <color red="0" green="0" blue="0" />
+    </border_color>
+    <widget_type>Grouping Container</widget_type>
+    <background_color>
+      <color red="240" green="240" blue="240" />
+    </background_color>
+    <width>265</width>
+    <x>12</x>
+    <name>Phase</name>
+    <y>60</y>
+    <foreground_color>
+      <color red="192" green="192" blue="192" />
+    </foreground_color>
+    <actions hook="false" hook_all="false" />
+    <fc>false</fc>
+    <show_scrollbar>false</show_scrollbar>
+    <font>
+      <fontdata fontName="Sans" height="12" style="1" />
+    </font>
+    <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+      <border_style>0</border_style>
+      <tooltip></tooltip>
+      <horizontal_alignment>0</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-6fd1</wuid>
+      <transparent>true</transparent>
+      <auto_size>false</auto_size>
+      <text>Actual</text>
+      <scripts />
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Label</widget_type>
+      <wrap_words>false</wrap_words>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>61</width>
+      <x>0</x>
+      <name>Label_5</name>
+      <y>114</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+      <border_style>0</border_style>
+      <tooltip></tooltip>
+      <horizontal_alignment>0</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-6fdb</wuid>
+      <transparent>true</transparent>
+      <auto_size>false</auto_size>
+      <text>Mode</text>
+      <scripts />
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Label</widget_type>
+      <wrap_words>false</wrap_words>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>61</width>
+      <x>0</x>
+      <name>Label_2</name>
+      <y>12</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+      <border_style>0</border_style>
+      <tooltip></tooltip>
+      <horizontal_alignment>0</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-6fdc</wuid>
+      <transparent>true</transparent>
+      <auto_size>false</auto_size>
+      <text>Offset</text>
+      <scripts />
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Label</widget_type>
+      <wrap_words>false</wrap_words>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>61</width>
+      <x>0</x>
+      <name>Label_3</name>
+      <y>84</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+      <border_style>0</border_style>
+      <tooltip></tooltip>
+      <horizontal_alignment>0</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-6fdd</wuid>
+      <transparent>true</transparent>
+      <auto_size>false</auto_size>
+      <text>Actual</text>
+      <scripts />
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Label</widget_type>
+      <wrap_words>false</wrap_words>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>61</width>
+      <x>0</x>
+      <name>Label_4</name>
+      <y>42</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.MenuButton" version="1.0.0">
+      <border_style>6</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <actions_from_pv>true</actions_from_pv>
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(actions)</tooltip>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-6f16</wuid>
+      <transparent>false</transparent>
+      <pv_value />
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:Phase}Phs:Mode-SP</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <label></label>
+      <widget_type>Menu Button</widget_type>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <background_color>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </background_color>
+      <width>157</width>
+      <x>66</x>
+      <name>Menu Button</name>
+      <y>12</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <font>
+        <opifont.name fontName="Sans" height="10" style="0">Default</opifont.name>
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.Rectangle" version="1.0.0">
+      <border_style>1</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <line_width>0</line_width>
+      <horizontal_fill>true</horizontal_fill>
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-6743</wuid>
+      <transparent>false</transparent>
+      <pv_value />
+      <alpha>255</alpha>
+      <bg_gradient_color>
+        <color red="255" green="255" blue="255" />
+      </bg_gradient_color>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <height>6</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <pv_name></pv_name>
+      <gradient>true</gradient>
+      <border_color>
+        <color red="80" green="80" blue="80" />
+      </border_color>
+      <anti_alias>true</anti_alias>
+      <line_style>0</line_style>
+      <widget_type>Rectangle</widget_type>
+      <fg_gradient_color>
+        <color red="255" green="255" blue="255" />
+      </fg_gradient_color>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <background_color>
+        <color red="80" green="80" blue="80" />
+      </background_color>
+      <width>9</width>
+      <x>72</x>
+      <name>Rectangle_1</name>
+      <y>22</y>
+      <fill_level>0.0</fill_level>
+      <foreground_color>
+        <color red="255" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <font>
+        <opifont.name fontName="Sans" height="10" style="0">Default</opifont.name>
+      </font>
+      <line_color>
+        <color red="128" green="0" blue="255" />
+      </line_color>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.TextUpdate" version="1.0.0">
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <alarm_pulsing>false</alarm_pulsing>
+      <precision>1</precision>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <horizontal_alignment>1</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-5f5b</wuid>
+      <transparent>false</transparent>
+      <pv_value />
+      <auto_size>false</auto_size>
+      <text>######</text>
+      <rotation_angle>0.0</rotation_angle>
+      <scripts />
+      <border_alarm_sensitive>true</border_alarm_sensitive>
+      <show_units>true</show_units>
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:Phase}Phs:Mode-RB</pv_name>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <precision_from_pv>true</precision_from_pv>
+      <widget_type>Text Update</widget_type>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <wrap_words>false</wrap_words>
+      <format_type>0</format_type>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>157</width>
+      <x>66</x>
+      <name>Text Update</name>
+      <y>42</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.TextUpdate" version="1.0.0">
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <alarm_pulsing>false</alarm_pulsing>
+      <precision>1</precision>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <horizontal_alignment>2</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-5f40</wuid>
+      <transparent>false</transparent>
+      <pv_value />
+      <auto_size>false</auto_size>
+      <text>######</text>
+      <rotation_angle>0.0</rotation_angle>
+      <scripts />
+      <border_alarm_sensitive>true</border_alarm_sensitive>
+      <show_units>true</show_units>
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:Phase}-Mtr.RBV</pv_name>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <precision_from_pv>true</precision_from_pv>
+      <widget_type>Text Update</widget_type>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <wrap_words>false</wrap_words>
+      <format_type>0</format_type>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>157</width>
+      <x>66</x>
+      <name>Text Update_1</name>
+      <y>114</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
+      <toggle_button>false</toggle_button>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <push_action_index>0</push_action_index>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-5f1e</wuid>
+      <pv_value />
+      <text>  Stop      </text>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <image>../../../common/icons/write.png</image>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:Phase}-Mtr.STOP</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Action Button</widget_type>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <background_color>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </background_color>
+      <width>115</width>
+      <x>108</x>
+      <name>Action Button_1</name>
+      <y>156</y>
+      <style>0</style>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false">
+        <action type="WRITE_PV">
+          <pv_name>$(pv_name)</pv_name>
+          <value>1</value>
+          <timeout>10</timeout>
+          <confirm_message></confirm_message>
+          <description></description>
+        </action>
+      </actions>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules />
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <pv_value />
+      <height>31</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:Phase}-Mtr.MOVN</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_1aa</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-5f0f</wuid>
+      <on_color>
+        <color name="On" red="0" green="255" blue="0" />
+      </on_color>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <on_label>ON</on_label>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <off_color>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </off_color>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>31</width>
+      <x>66</x>
+      <data_type>0</data_type>
+      <y>153</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+      <off_label>OFF</off_label>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+      <border_style>0</border_style>
+      <tooltip></tooltip>
+      <horizontal_alignment>0</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-5ef3</wuid>
+      <transparent>true</transparent>
+      <auto_size>false</auto_size>
+      <text>Moving</text>
+      <scripts />
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Label</widget_type>
+      <wrap_words>false</wrap_words>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>61</width>
+      <x>0</x>
+      <name>Label_5</name>
+      <y>156</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.TextInput" version="2.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <precision>0</precision>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <horizontal_alignment>2</horizontal_alignment>
+      <rules>
+        <rule name="Color Rule" prop_id="foreground_color" out_exp="false">
+          <exp bool_exp="pv0&lt;pv1&amp;&amp;pv0&gt;pv2">
+            <value>
+              <color name="Major" red="255" green="0" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(pv_name)</pv>
+          <pv trig="true">$(pv_name).DRVL</pv>
+          <pv trig="true">$(pv_name).DRVH</pv>
+        </rule>
+      </rules>
+      <pv_value />
+      <auto_size>false</auto_size>
+      <text></text>
+      <rotation_angle>0.0</rotation_angle>
+      <show_units>true</show_units>
+      <height>25</height>
+      <multiline_input>false</multiline_input>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:Phase}-Mtr-SP</pv_name>
+      <selector_type>0</selector_type>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <precision_from_pv>true</precision_from_pv>
+      <widget_type>Text Input</widget_type>
+      <confirm_message></confirm_message>
+      <name>Text Input_1</name>
+      <style>0</style>
+      <actions hook="false" hook_all="false" />
+      <border_style>3</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>1eb95e24:14b783f93fc:-77d6</wuid>
+      <transparent>false</transparent>
+      <scripts />
+      <border_alarm_sensitive>true</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <format_type>0</format_type>
+      <limits_from_pv>false</limits_from_pv>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>157</width>
+      <x>66</x>
+      <y>84</y>
+      <maximum>1.7976931348623157E308</maximum>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <minimum>-1.7976931348623157E308</minimum>
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
+    <toggle_button>false</toggle_button>
+    <border_style>0</border_style>
+    <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+    <alarm_pulsing>false</alarm_pulsing>
+    <tooltip>$(actions)</tooltip>
+    <push_action_index>0</push_action_index>
+    <rules />
+    <enabled>true</enabled>
+    <wuid>-3e4bd068:1485b8226f9:-7566</wuid>
+    <pv_value />
+    <text>Engineering Mode</text>
+    <scripts />
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <height>37</height>
+    <border_width>1</border_width>
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <image></image>
+    <visible>true</visible>
+    <pv_name></pv_name>
+    <border_color>
+      <color red="0" green="128" blue="255" />
+    </border_color>
+    <widget_type>Action Button</widget_type>
+    <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+    <background_color>
+      <color name="ButtonFG" red="180" green="180" blue="180" />
+    </background_color>
+    <width>241</width>
+    <x>288</x>
+    <name>Action Button</name>
+    <y>684</y>
+    <style>0</style>
+    <foreground_color>
+      <color red="0" green="0" blue="0" />
+    </foreground_color>
+    <actions hook="false" hook_all="true">
+      <action type="OPEN_DISPLAY">
+        <path>../egn_interface/egn_interface.opi</path>
+        <macros>
+          <include_parent_macros>true</include_parent_macros>
+        </macros>
+        <replace>1</replace>
+        <description>Engineering Mode</description>
+      </action>
+    </actions>
+    <font>
+      <fontdata fontName="Sans" height="11" style="1" />
+    </font>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
+    <border_style>13</border_style>
+    <tooltip></tooltip>
+    <rules />
+    <enabled>true</enabled>
+    <wuid>-3e4bd068:1485b8226f9:-5cf5</wuid>
+    <transparent>false</transparent>
+    <lock_children>false</lock_children>
+    <scripts />
+    <height>298</height>
+    <border_width>1</border_width>
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <macros>
+      <include_parent_macros>true</include_parent_macros>
+    </macros>
+    <visible>true</visible>
+    <border_color>
+      <color red="0" green="0" blue="0" />
+    </border_color>
+    <widget_type>Grouping Container</widget_type>
+    <background_color>
+      <color red="240" green="240" blue="240" />
+    </background_color>
+    <width>265</width>
+    <x>12</x>
+    <name>Motor Status</name>
+    <y>294</y>
+    <foreground_color>
+      <color red="192" green="192" blue="192" />
+    </foreground_color>
+    <actions hook="false" hook_all="false" />
+    <fc>false</fc>
+    <show_scrollbar>false</show_scrollbar>
+    <font>
+      <fontdata fontName="Sans" height="12" style="1" />
+    </font>
+    <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+      <border_style>0</border_style>
+      <tooltip></tooltip>
+      <horizontal_alignment>1</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-5a6a</wuid>
+      <transparent>true</transparent>
+      <auto_size>false</auto_size>
+      <text>Amp</text>
+      <scripts />
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Label</widget_type>
+      <wrap_words>false</wrap_words>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>49</width>
+      <x>174</x>
+      <name>Label_22</name>
+      <y>0</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+      <border_style>0</border_style>
+      <tooltip></tooltip>
+      <horizontal_alignment>1</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-5a71</wuid>
+      <transparent>true</transparent>
+      <auto_size>false</auto_size>
+      <text>Moving</text>
+      <scripts />
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Label</widget_type>
+      <wrap_words>false</wrap_words>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>55</width>
+      <x>66</x>
+      <name>Label_22</name>
+      <y>0</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+      <border_style>0</border_style>
+      <tooltip></tooltip>
+      <horizontal_alignment>1</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-5a63</wuid>
+      <transparent>true</transparent>
+      <auto_size>false</auto_size>
+      <text>Error</text>
+      <scripts />
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Label</widget_type>
+      <wrap_words>false</wrap_words>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>49</width>
+      <x>126</x>
+      <name>Label_22</name>
+      <y>0</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules>
+        <rule name="Rule" prop_id="state_color_0" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color red="0" green="255" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(sys){$(dev)-Ax:TU}-Mtr.MOVN</pv>
+        </rule>
+      </rules>
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:TU}-Mtr.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_1a</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-5cea</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color red="0" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>OK</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>true</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>84</x>
+      <data_type>0</data_type>
+      <y>24</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules />
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:TU}-MtrErr-Sts.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_1b</name>
+      <actions hook="true" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-59c6</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color name="Invalid" red="255" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>NO_ALARM</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>138</x>
+      <data_type>0</data_type>
+      <y>24</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules>
+        <rule name="Rule" prop_id="state_color_0" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color red="0" green="255" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(sys){$(dev)-Ax:TU}Sw:AmpEn-Sts</pv>
+        </rule>
+      </rules>
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:TU}Sw:AmpEn-Sts.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_8</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-59bf</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color name="Invalid" red="255" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>NO_ALARM</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>186</x>
+      <data_type>0</data_type>
+      <y>24</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules />
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:TD}-MtrErr-Sts.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_9</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-599c</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color name="Invalid" red="255" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>NO_ALARM</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>138</x>
+      <data_type>0</data_type>
+      <y>54</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules />
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:BU}-MtrErr-Sts.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_9</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-598d</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color name="Invalid" red="255" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>NO_ALARM</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>138</x>
+      <data_type>0</data_type>
+      <y>84</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules />
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:BD}-MtrErr-Sts.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_9</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-597e</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color name="Invalid" red="255" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>NO_ALARM</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>138</x>
+      <data_type>0</data_type>
+      <y>114</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules />
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:TO}-MtrErr-Sts.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_9</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-596f</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color name="Invalid" red="255" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>NO_ALARM</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>138</x>
+      <data_type>0</data_type>
+      <y>144</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules />
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:TI}-MtrErr-Sts.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_9</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-5960</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color name="Invalid" red="255" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>NO_ALARM</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>138</x>
+      <data_type>0</data_type>
+      <y>174</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules />
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:BO}-MtrErr-Sts.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_9</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-5951</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color name="Invalid" red="255" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>NO_ALARM</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>138</x>
+      <data_type>0</data_type>
+      <y>204</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules />
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:BI}-MtrErr-Sts.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_9</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-5942</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color name="Invalid" red="255" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>NO_ALARM</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>138</x>
+      <data_type>0</data_type>
+      <y>234</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
+      <toggle_button>false</toggle_button>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(actions)</tooltip>
+      <push_action_index>0</push_action_index>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-530f</wuid>
+      <pv_value />
+      <text>Ax:TU</text>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <image></image>
+      <visible>true</visible>
+      <pv_name></pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Action Button</widget_type>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <background_color>
+        <color name="GlobalBG" red="240" green="240" blue="240" />
+      </background_color>
+      <width>55</width>
+      <x>0</x>
+      <name>Action Button_3</name>
+      <y>24</y>
+      <style>0</style>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false">
+        <action type="OPEN_DISPLAY">
+          <path>../egn_interface/motorStatus.opi</path>
+          <macros>
+            <include_parent_macros>true</include_parent_macros>
+            <dev>$(dev)-Ax:TU</dev>
+          </macros>
+          <replace>0</replace>
+          <description></description>
+        </action>
+      </actions>
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
+      <toggle_button>false</toggle_button>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(actions)</tooltip>
+      <push_action_index>0</push_action_index>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-5249</wuid>
+      <pv_value />
+      <text>Ax:TD</text>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <image></image>
+      <visible>true</visible>
+      <pv_name></pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Action Button</widget_type>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <background_color>
+        <color name="GlobalBG" red="240" green="240" blue="240" />
+      </background_color>
+      <width>55</width>
+      <x>0</x>
+      <name>Action Button_1</name>
+      <y>54</y>
+      <style>0</style>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false">
+        <action type="OPEN_DISPLAY">
+          <path>../egn_interface/motorStatus.opi</path>
+          <macros>
+            <include_parent_macros>true</include_parent_macros>
+            <dev>$(dev)-Ax:TD</dev>
+          </macros>
+          <replace>0</replace>
+          <description></description>
+        </action>
+      </actions>
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
+      <toggle_button>false</toggle_button>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(actions)</tooltip>
+      <push_action_index>0</push_action_index>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-5242</wuid>
+      <pv_value />
+      <text>Ax:BU</text>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <image></image>
+      <visible>true</visible>
+      <pv_name></pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Action Button</widget_type>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <background_color>
+        <color name="GlobalBG" red="240" green="240" blue="240" />
+      </background_color>
+      <width>55</width>
+      <x>0</x>
+      <name>Action Button_3</name>
+      <y>84</y>
+      <style>0</style>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false">
+        <action type="OPEN_DISPLAY">
+          <path>../egn_interface/motorStatus.opi</path>
+          <macros>
+            <include_parent_macros>true</include_parent_macros>
+            <dev>$(dev)-Ax:BU</dev>
+          </macros>
+          <replace>0</replace>
+          <description></description>
+        </action>
+      </actions>
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
+      <toggle_button>false</toggle_button>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(actions)</tooltip>
+      <push_action_index>0</push_action_index>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-523b</wuid>
+      <pv_value />
+      <text>Ax:BD</text>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <image></image>
+      <visible>true</visible>
+      <pv_name></pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Action Button</widget_type>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <background_color>
+        <color name="GlobalBG" red="240" green="240" blue="240" />
+      </background_color>
+      <width>55</width>
+      <x>0</x>
+      <name>Action Button_3</name>
+      <y>114</y>
+      <style>0</style>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false">
+        <action type="OPEN_DISPLAY">
+          <path>../egn_interface/motorStatus.opi</path>
+          <macros>
+            <include_parent_macros>true</include_parent_macros>
+            <dev>$(dev)-Ax:BD</dev>
+          </macros>
+          <replace>0</replace>
+          <description></description>
+        </action>
+      </actions>
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
+      <toggle_button>false</toggle_button>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(actions)</tooltip>
+      <push_action_index>0</push_action_index>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-5234</wuid>
+      <pv_value />
+      <text>Ax:TO</text>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <image></image>
+      <visible>true</visible>
+      <pv_name></pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Action Button</widget_type>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <background_color>
+        <color name="GlobalBG" red="240" green="240" blue="240" />
+      </background_color>
+      <width>55</width>
+      <x>0</x>
+      <name>Action Button_3</name>
+      <y>144</y>
+      <style>0</style>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false">
+        <action type="OPEN_DISPLAY">
+          <path>../egn_interface/motorStatus.opi</path>
+          <macros>
+            <include_parent_macros>true</include_parent_macros>
+            <dev>$(dev)-Ax:TO</dev>
+          </macros>
+          <replace>0</replace>
+          <description></description>
+        </action>
+      </actions>
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
+      <toggle_button>false</toggle_button>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(actions)</tooltip>
+      <push_action_index>0</push_action_index>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-522d</wuid>
+      <pv_value />
+      <text>Ax:TI</text>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <image></image>
+      <visible>true</visible>
+      <pv_name></pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Action Button</widget_type>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <background_color>
+        <color name="GlobalBG" red="240" green="240" blue="240" />
+      </background_color>
+      <width>55</width>
+      <x>0</x>
+      <name>Action Button_3</name>
+      <y>174</y>
+      <style>0</style>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false">
+        <action type="OPEN_DISPLAY">
+          <path>../egn_interface/motorStatus.opi</path>
+          <macros>
+            <include_parent_macros>true</include_parent_macros>
+            <dev>$(dev)-Ax:TI</dev>
+          </macros>
+          <replace>0</replace>
+          <description></description>
+        </action>
+      </actions>
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
+      <toggle_button>false</toggle_button>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(actions)</tooltip>
+      <push_action_index>0</push_action_index>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-5226</wuid>
+      <pv_value />
+      <text>Ax:BO</text>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <image></image>
+      <visible>true</visible>
+      <pv_name></pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Action Button</widget_type>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <background_color>
+        <color name="GlobalBG" red="240" green="240" blue="240" />
+      </background_color>
+      <width>55</width>
+      <x>0</x>
+      <name>Action Button_3</name>
+      <y>204</y>
+      <style>0</style>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false">
+        <action type="OPEN_DISPLAY">
+          <path>../egn_interface/motorStatus.opi</path>
+          <macros>
+            <include_parent_macros>true</include_parent_macros>
+            <dev>$(dev)-Ax:BO</dev>
+          </macros>
+          <replace>0</replace>
+          <description></description>
+        </action>
+      </actions>
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
+      <toggle_button>false</toggle_button>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(actions)</tooltip>
+      <push_action_index>0</push_action_index>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-521f</wuid>
+      <pv_value />
+      <text>Ax:BI</text>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <image></image>
+      <visible>true</visible>
+      <pv_name></pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Action Button</widget_type>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <background_color>
+        <color name="GlobalBG" red="240" green="240" blue="240" />
+      </background_color>
+      <width>55</width>
+      <x>0</x>
+      <name>Action Button_3</name>
+      <y>234</y>
+      <style>0</style>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false">
+        <action type="OPEN_DISPLAY">
+          <path>../egn_interface/motorStatus.opi</path>
+          <macros>
+            <include_parent_macros>true</include_parent_macros>
+            <dev>$(dev)-Ax:BI</dev>
+          </macros>
+          <replace>0</replace>
+          <description></description>
+        </action>
+      </actions>
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules>
+        <rule name="Rule" prop_id="state_color_0" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color red="0" green="255" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(sys){$(dev)-Ax:TD}Sw:AmpEn-Sts</pv>
+        </rule>
+      </rules>
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:TD}Sw:AmpEn-Sts.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_23</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>550a9fe6:1485fd4e3cb:-7460</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color name="Invalid" red="255" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>NO_ALARM</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>186</x>
+      <data_type>0</data_type>
+      <y>54</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules>
+        <rule name="Rule" prop_id="state_color_0" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color red="0" green="255" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(sys){$(dev)-Ax:BU}Sw:AmpEn-Sts</pv>
+        </rule>
+      </rules>
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:BU}Sw:AmpEn-Sts.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_8</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>550a9fe6:1485fd4e3cb:-7459</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color name="Invalid" red="255" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>NO_ALARM</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>186</x>
+      <data_type>0</data_type>
+      <y>84</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules>
+        <rule name="Rule" prop_id="state_color_0" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color red="0" green="255" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(sys){$(dev)-Ax:BD}Sw:AmpEn-Sts</pv>
+        </rule>
+      </rules>
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:BD}Sw:AmpEn-Sts.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_8</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>550a9fe6:1485fd4e3cb:-7452</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color name="Invalid" red="255" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>NO_ALARM</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>186</x>
+      <data_type>0</data_type>
+      <y>114</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules>
+        <rule name="Rule" prop_id="state_color_0" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color red="0" green="255" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(sys){$(dev)-Ax:TO}Sw:AmpEn-Sts</pv>
+        </rule>
+      </rules>
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:TO}Sw:AmpEn-Sts.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_8</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>550a9fe6:1485fd4e3cb:-744b</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color name="Invalid" red="255" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>NO_ALARM</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>186</x>
+      <data_type>0</data_type>
+      <y>144</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules>
+        <rule name="Rule" prop_id="state_color_0" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color red="0" green="255" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(sys){$(dev)-Ax:TI}Sw:AmpEn-Sts</pv>
+        </rule>
+      </rules>
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:TI}Sw:AmpEn-Sts.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_8</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>550a9fe6:1485fd4e3cb:-7444</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color name="Invalid" red="255" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>NO_ALARM</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>186</x>
+      <data_type>0</data_type>
+      <y>174</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules>
+        <rule name="Rule" prop_id="state_color_0" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color red="0" green="255" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(sys){$(dev)-Ax:BO}Sw:AmpEn-Sts</pv>
+        </rule>
+      </rules>
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:BO}Sw:AmpEn-Sts.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_8</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>550a9fe6:1485fd4e3cb:-743d</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color name="Invalid" red="255" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>NO_ALARM</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>186</x>
+      <data_type>0</data_type>
+      <y>204</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules>
+        <rule name="Rule" prop_id="state_color_0" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color red="0" green="255" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(sys){$(dev)-Ax:BI}Sw:AmpEn-Sts</pv>
+        </rule>
+      </rules>
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:BI}Sw:AmpEn-Sts.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_8</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>550a9fe6:1485fd4e3cb:-7436</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color name="Invalid" red="255" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>NO_ALARM</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>186</x>
+      <data_type>0</data_type>
+      <y>234</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules>
+        <rule name="Rule" prop_id="state_color_0" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color red="0" green="255" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(sys){$(dev)-Ax:TD}-Mtr.MOVN</pv>
+        </rule>
+      </rules>
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:TD}-Mtr.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_30</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-4338fec5:148d1762ed0:-7dda</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color red="0" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>OK</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>true</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>84</x>
+      <data_type>0</data_type>
+      <y>54</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules>
+        <rule name="Rule" prop_id="state_color_0" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color red="0" green="255" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(sys){$(dev)-Ax:BU}-Mtr.MOVN</pv>
+        </rule>
+      </rules>
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:BU}-Mtr.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_1</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-4338fec5:148d1762ed0:-7dd3</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color red="0" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>OK</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>true</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>84</x>
+      <data_type>0</data_type>
+      <y>84</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules>
+        <rule name="Rule" prop_id="state_color_0" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color red="0" green="255" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(sys){$(dev)-Ax:BD}-Mtr.MOVN</pv>
+        </rule>
+      </rules>
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:BD}-Mtr.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_1</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-4338fec5:148d1762ed0:-7dcc</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color red="0" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>OK</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>true</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>84</x>
+      <data_type>0</data_type>
+      <y>114</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules>
+        <rule name="Rule" prop_id="state_color_0" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color red="0" green="255" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(sys){$(dev)-Ax:TO}-Mtr.MOVN</pv>
+        </rule>
+      </rules>
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:TO}-Mtr.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_1</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-4338fec5:148d1762ed0:-7dc5</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color red="0" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>OK</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>true</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>84</x>
+      <data_type>0</data_type>
+      <y>144</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules>
+        <rule name="Rule" prop_id="state_color_0" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color red="0" green="255" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(sys){$(dev)-Ax:TI}-Mtr.MOVN</pv>
+        </rule>
+      </rules>
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:TI}-Mtr.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_1</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-4338fec5:148d1762ed0:-7dbe</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color red="0" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>OK</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>true</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>84</x>
+      <data_type>0</data_type>
+      <y>174</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules>
+        <rule name="Rule" prop_id="state_color_0" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color red="0" green="255" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(sys){$(dev)-Ax:BO}-Mtr.MOVN</pv>
+        </rule>
+      </rules>
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:BO}-Mtr.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_1</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-4338fec5:148d1762ed0:-7db7</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color red="0" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>OK</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>true</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>84</x>
+      <data_type>0</data_type>
+      <y>204</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules>
+        <rule name="Rule" prop_id="state_color_0" out_exp="false">
+          <exp bool_exp="pv0==1">
+            <value>
+              <color red="0" green="255" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(sys){$(dev)-Ax:BI}-Mtr.MOVN</pv>
+        </rule>
+      </rules>
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <state_value_3>3.0</state_value_3>
+      <state_value_2>2.0</state_value_2>
+      <state_value_1>1.0</state_value_1>
+      <pv_value />
+      <state_value_0>0.0</state_value_0>
+      <height>25</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:BI}-Mtr.SEVR</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_1</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-4338fec5:148d1762ed0:-7db0</wuid>
+      <state_color_0>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </state_color_0>
+      <state_color_1>
+        <color name="Minor" red="255" green="128" blue="0" />
+      </state_color_1>
+      <state_color_2>
+        <color name="Major" red="255" green="0" blue="0" />
+      </state_color_2>
+      <state_color_3>
+        <color red="0" green="0" blue="255" />
+      </state_color_3>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <state_label_0>OK</state_label_0>
+      <state_color_fallback>
+        <color red="100" green="100" blue="100" />
+      </state_color_fallback>
+      <state_label_fallback>ERR</state_label_fallback>
+      <state_label_1>MINOR</state_label_1>
+      <state_label_2>MAJOR</state_label_2>
+      <state_label_3>INVALID</state_label_3>
+      <backcolor_alarm_sensitive>true</backcolor_alarm_sensitive>
+      <state_count>4</state_count>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>25</width>
+      <x>84</x>
+      <data_type>0</data_type>
+      <y>234</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0.0">
+    <border_style>13</border_style>
+    <tooltip></tooltip>
+    <rules />
+    <enabled>true</enabled>
+    <wuid>-3e4bd068:1485b8226f9:-4e99</wuid>
+    <transparent>false</transparent>
+    <lock_children>false</lock_children>
+    <scripts />
+    <height>139</height>
+    <border_width>1</border_width>
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <macros>
+      <include_parent_macros>true</include_parent_macros>
+    </macros>
+    <visible>true</visible>
+    <border_color>
+      <color red="0" green="0" blue="0" />
+    </border_color>
+    <widget_type>Grouping Container</widget_type>
+    <background_color>
+      <color red="240" green="240" blue="240" />
+    </background_color>
+    <width>620</width>
+    <x>278</x>
+    <name>Gap</name>
+    <y>60</y>
+    <foreground_color>
+      <color red="192" green="192" blue="192" />
+    </foreground_color>
+    <actions hook="false" hook_all="false" />
+    <fc>false</fc>
+    <show_scrollbar>false</show_scrollbar>
+    <font>
+      <fontdata fontName="Sans" height="12" style="1" />
+    </font>
+    <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+      <border_style>0</border_style>
+      <tooltip></tooltip>
+      <horizontal_alignment>0</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-4e97</wuid>
+      <transparent>true</transparent>
+      <auto_size>false</auto_size>
+      <text>Set</text>
+      <scripts />
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Label</widget_type>
+      <wrap_words>false</wrap_words>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>61</width>
+      <x>24</x>
+      <name>Label_2</name>
+      <y>12</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+      <border_style>0</border_style>
+      <tooltip></tooltip>
+      <horizontal_alignment>0</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-4e95</wuid>
+      <transparent>true</transparent>
+      <auto_size>false</auto_size>
+      <text>Actual</text>
+      <scripts />
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Label</widget_type>
+      <wrap_words>false</wrap_words>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>61</width>
+      <x>24</x>
+      <name>Label_4</name>
+      <y>42</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.TextUpdate" version="1.0.0">
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <alarm_pulsing>false</alarm_pulsing>
+      <precision>1</precision>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <horizontal_alignment>2</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-4e92</wuid>
+      <transparent>false</transparent>
+      <pv_value />
+      <auto_size>false</auto_size>
+      <text>######</text>
+      <rotation_angle>0.0</rotation_angle>
+      <scripts />
+      <border_alarm_sensitive>true</border_alarm_sensitive>
+      <show_units>true</show_units>
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:Gap}-Mtr.RBV</pv_name>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <precision_from_pv>true</precision_from_pv>
+      <widget_type>Text Update</widget_type>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <wrap_words>false</wrap_words>
+      <format_type>0</format_type>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>157</width>
+      <x>90</x>
+      <name>Text Update</name>
+      <y>42</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.TextUpdate" version="1.0.0">
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <alarm_pulsing>false</alarm_pulsing>
+      <precision>1</precision>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <horizontal_alignment>2</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-4e90</wuid>
+      <transparent>false</transparent>
+      <pv_value />
+      <auto_size>false</auto_size>
+      <text>######</text>
+      <rotation_angle>0.0</rotation_angle>
+      <scripts />
+      <border_alarm_sensitive>true</border_alarm_sensitive>
+      <show_units>true</show_units>
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:Gap}Taper-RB</pv_name>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <precision_from_pv>true</precision_from_pv>
+      <widget_type>Text Update</widget_type>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <wrap_words>false</wrap_words>
+      <format_type>0</format_type>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>127</width>
+      <x>396</x>
+      <name>Text Update_1</name>
+      <y>63</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
+      <toggle_button>false</toggle_button>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <push_action_index>0</push_action_index>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-4e8f</wuid>
+      <pv_value />
+      <text>  Stop      </text>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <image>../../../common/icons/write.png</image>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:Gap}-Mtr.STOP</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Action Button</widget_type>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <background_color>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </background_color>
+      <width>115</width>
+      <x>132</x>
+      <name>Action Button_1</name>
+      <y>75</y>
+      <style>0</style>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false">
+        <action type="WRITE_PV">
+          <pv_name>$(pv_name)</pv_name>
+          <value>1</value>
+          <timeout>10</timeout>
+          <confirm_message></confirm_message>
+          <description></description>
+        </action>
+      </actions>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.LED" version="1.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <rules />
+      <effect_3d>true</effect_3d>
+      <bit>-1</bit>
+      <pv_value />
+      <height>31</height>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:Gap}-Mtr.MOVN</pv_name>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>LED</widget_type>
+      <name>LED_1</name>
+      <actions hook="false" hook_all="false" />
+      <show_boolean_label>false</show_boolean_label>
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-4e8e</wuid>
+      <on_color>
+        <color name="On" red="0" green="255" blue="0" />
+      </on_color>
+      <scripts />
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <on_label>ON</on_label>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>true</keep_wh_ratio>
+      </scale_options>
+      <off_color>
+        <color name="ButtonFG" red="180" green="180" blue="180" />
+      </off_color>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <background_color>
+        <color red="240" green="240" blue="240" />
+      </background_color>
+      <square_led>true</square_led>
+      <width>31</width>
+      <x>90</x>
+      <data_type>0</data_type>
+      <y>72</y>
+      <foreground_color>
+        <color red="192" green="192" blue="192" />
+      </foreground_color>
+      <font>
+        <fontdata fontName="Sans" height="12" style="1" />
+      </font>
+      <off_label>OFF</off_label>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+      <border_style>0</border_style>
+      <tooltip></tooltip>
+      <horizontal_alignment>0</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-4e8d</wuid>
+      <transparent>true</transparent>
+      <auto_size>false</auto_size>
+      <text>Moving</text>
+      <scripts />
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Label</widget_type>
+      <wrap_words>false</wrap_words>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>61</width>
+      <x>24</x>
+      <name>Label_5</name>
+      <y>75</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.TextUpdate" version="1.0.0">
+      <border_style>0</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <alarm_pulsing>false</alarm_pulsing>
+      <precision>1</precision>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <horizontal_alignment>2</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-4b0d</wuid>
+      <transparent>false</transparent>
+      <pv_value />
+      <auto_size>false</auto_size>
+      <text>######</text>
+      <rotation_angle>0.0</rotation_angle>
+      <scripts />
+      <border_alarm_sensitive>true</border_alarm_sensitive>
+      <show_units>true</show_units>
+      <height>25</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:Gap}Center-RB</pv_name>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <precision_from_pv>true</precision_from_pv>
+      <widget_type>Text Update</widget_type>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <wrap_words>false</wrap_words>
+      <format_type>0</format_type>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>127</width>
+      <x>396</x>
+      <name>Text Update_2</name>
+      <y>21</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+      <border_style>0</border_style>
+      <tooltip></tooltip>
+      <horizontal_alignment>0</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-4a61</wuid>
+      <transparent>true</transparent>
+      <auto_size>false</auto_size>
+      <text>Measured
+Center Offset</text>
+      <scripts />
+      <height>43</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Label</widget_type>
+      <wrap_words>true</wrap_words>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>115</width>
+      <x>282</x>
+      <name>Label</name>
+      <y>12</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <show_scrollbar>false</show_scrollbar>
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+      <border_style>0</border_style>
+      <tooltip></tooltip>
+      <horizontal_alignment>0</horizontal_alignment>
+      <rules />
+      <enabled>true</enabled>
+      <wuid>-3e4bd068:1485b8226f9:-4a4b</wuid>
+      <transparent>true</transparent>
+      <auto_size>false</auto_size>
+      <text>Measured
+Taper</text>
+      <scripts />
+      <height>43</height>
+      <border_width>1</border_width>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <visible>true</visible>
+      <vertical_alignment>1</vertical_alignment>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <widget_type>Label</widget_type>
+      <wrap_words>true</wrap_words>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>115</width>
+      <x>282</x>
+      <name>Label_7</name>
+      <y>54</y>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <actions hook="false" hook_all="false" />
+      <show_scrollbar>false</show_scrollbar>
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+    <widget typeId="org.csstudio.opibuilder.widgets.TextInput" version="2.0.0">
+      <alarm_pulsing>false</alarm_pulsing>
+      <precision>0</precision>
+      <tooltip>$(pv_name)
+$(pv_value)</tooltip>
+      <horizontal_alignment>2</horizontal_alignment>
+      <rules>
+        <rule name="Color Rule" prop_id="foreground_color" out_exp="false">
+          <exp bool_exp="pv0&lt;pv1&amp;&amp;pv0&gt;pv2">
+            <value>
+              <color name="Major" red="255" green="0" blue="0" />
+            </value>
+          </exp>
+          <pv trig="true">$(pv_name)</pv>
+          <pv trig="true">$(pv_name).DRVL</pv>
+          <pv trig="true">$(pv_name).DRVH</pv>
+        </rule>
+      </rules>
+      <pv_value />
+      <auto_size>false</auto_size>
+      <text></text>
+      <rotation_angle>0.0</rotation_angle>
+      <show_units>true</show_units>
+      <height>25</height>
+      <multiline_input>false</multiline_input>
+      <border_width>1</border_width>
+      <visible>true</visible>
+      <pv_name>$(sys){$(dev)-Ax:Gap}-Mtr-SP</pv_name>
+      <selector_type>0</selector_type>
+      <border_color>
+        <color red="0" green="128" blue="255" />
+      </border_color>
+      <precision_from_pv>true</precision_from_pv>
+      <widget_type>Text Input</widget_type>
+      <confirm_message></confirm_message>
+      <name>Text Input</name>
+      <style>0</style>
+      <actions hook="false" hook_all="false" />
+      <border_style>3</border_style>
+      <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+      <enabled>true</enabled>
+      <wuid>1eb95e24:14b783f93fc:-78f5</wuid>
+      <transparent>false</transparent>
+      <scripts />
+      <border_alarm_sensitive>true</border_alarm_sensitive>
+      <scale_options>
+        <width_scalable>true</width_scalable>
+        <height_scalable>true</height_scalable>
+        <keep_wh_ratio>false</keep_wh_ratio>
+      </scale_options>
+      <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+      <format_type>0</format_type>
+      <limits_from_pv>false</limits_from_pv>
+      <background_color>
+        <color red="255" green="255" blue="255" />
+      </background_color>
+      <width>157</width>
+      <x>90</x>
+      <y>12</y>
+      <maximum>1.7976931348623157E308</maximum>
+      <foreground_color>
+        <color red="0" green="0" blue="0" />
+      </foreground_color>
+      <minimum>-1.7976931348623157E308</minimum>
+      <font>
+        <fontdata fontName="Sans" height="12" style="0" />
+      </font>
+    </widget>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.linkingContainer" version="1.0.0">
+    <opi_file>../common/interlock.opi</opi_file>
+    <border_style>13</border_style>
+    <tooltip></tooltip>
+    <rules />
+    <enabled>true</enabled>
+    <wuid>-3e4bd068:1485b8226f9:-4785</wuid>
+    <scripts />
+    <height>136</height>
+    <border_width>1</border_width>
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <macros>
+      <include_parent_macros>true</include_parent_macros>
+    </macros>
+    <resize_behaviour>0</resize_behaviour>
+    <visible>true</visible>
+    <group_name></group_name>
+    <border_color>
+      <color name="Foreground" red="0" green="0" blue="0" />
+    </border_color>
+    <widget_type>Linking Container</widget_type>
+    <background_color>
+      <color red="240" green="240" blue="240" />
+    </background_color>
+    <width>265</width>
+    <x>12</x>
+    <name>Interlock</name>
+    <y>591</y>
+    <foreground_color>
+      <color red="192" green="192" blue="192" />
+    </foreground_color>
+    <actions hook="false" hook_all="false" />
+    <font>
+      <opifont.name fontName="Sans" height="10" style="0">Default</opifont.name>
+    </font>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.linkingContainer" version="1.0.0">
+    <opi_file>../common/girders.opi</opi_file>
+    <border_style>4</border_style>
+    <tooltip></tooltip>
+    <rules />
+    <enabled>true</enabled>
+    <wuid>-3e4bd068:1485b8226f9:-4771</wuid>
+    <scripts />
+    <height>373</height>
+    <border_width>1</border_width>
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <macros>
+      <include_parent_macros>true</include_parent_macros>
+    </macros>
+    <resize_behaviour>0</resize_behaviour>
+    <visible>true</visible>
+    <group_name></group_name>
+    <border_color>
+      <color name="ButtonFG" red="180" green="180" blue="180" />
+    </border_color>
+    <widget_type>Linking Container</widget_type>
+    <background_color>
+      <color red="240" green="240" blue="240" />
+    </background_color>
+    <width>600</width>
+    <x>288</x>
+    <name>Linking Container_1</name>
+    <y>210</y>
+    <foreground_color>
+      <color red="192" green="192" blue="192" />
+    </foreground_color>
+    <actions hook="false" hook_all="false" />
+    <font>
+      <opifont.name fontName="Sans" height="10" style="0">Default</opifont.name>
+    </font>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.linkingContainer" version="1.0.0">
+    <opi_file>../common/stopall.opi</opi_file>
+    <border_style>1</border_style>
+    <tooltip></tooltip>
+    <rules />
+    <enabled>true</enabled>
+    <wuid>-3e4bd068:1485b8226f9:-475f</wuid>
+    <scripts />
+    <height>79</height>
+    <border_width>1</border_width>
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <macros>
+      <include_parent_macros>true</include_parent_macros>
+    </macros>
+    <resize_behaviour>0</resize_behaviour>
+    <visible>true</visible>
+    <group_name></group_name>
+    <border_color>
+      <color name="ButtonFG" red="180" green="180" blue="180" />
+    </border_color>
+    <widget_type>Linking Container</widget_type>
+    <background_color>
+      <color red="240" green="240" blue="240" />
+    </background_color>
+    <width>427</width>
+    <x>288</x>
+    <name>Linking Container_2</name>
+    <y>600</y>
+    <foreground_color>
+      <color red="192" green="192" blue="192" />
+    </foreground_color>
+    <actions hook="false" hook_all="false" />
+    <font>
+      <opifont.name fontName="Sans" height="10" style="0">Default</opifont.name>
+    </font>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
+    <toggle_button>false</toggle_button>
+    <border_style>0</border_style>
+    <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+    <alarm_pulsing>false</alarm_pulsing>
+    <tooltip>$(actions)</tooltip>
+    <push_action_index>0</push_action_index>
+    <rules />
+    <enabled>true</enabled>
+    <wuid>-3e4bd068:1485b8226f9:-46e2</wuid>
+    <pv_value />
+    <text>Operator-PLC Mode</text>
+    <scripts />
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <height>37</height>
+    <border_width>1</border_width>
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <image></image>
+    <visible>true</visible>
+    <pv_name></pv_name>
+    <border_color>
+      <color red="0" green="128" blue="255" />
+    </border_color>
+    <widget_type>Action Button</widget_type>
+    <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+    <background_color>
+      <color name="ButtonFG" red="180" green="180" blue="180" />
+    </background_color>
+    <width>241</width>
+    <x>647</x>
+    <name>Action Button_1</name>
+    <y>684</y>
+    <style>0</style>
+    <foreground_color>
+      <color red="0" green="0" blue="0" />
+    </foreground_color>
+    <actions hook="false" hook_all="true">
+      <action type="OPEN_DISPLAY">
+        <path>../plc_interface/temptiltoperator.opi</path>
+        <macros>
+          <include_parent_macros>true</include_parent_macros>
+        </macros>
+        <replace>0</replace>
+        <description>Open Operator-PLC OPI page</description>
+      </action>
+    </actions>
+    <font>
+      <fontdata fontName="Sans" height="11" style="1" />
+    </font>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
+    <toggle_button>false</toggle_button>
+    <border_style>0</border_style>
+    <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+    <alarm_pulsing>false</alarm_pulsing>
+    <tooltip>$(actions)</tooltip>
+    <push_action_index>0</push_action_index>
+    <rules />
+    <enabled>true</enabled>
+    <wuid>232da96b:149b616621f:-523a</wuid>
+    <pv_value />
+    <text>  MPS Page   </text>
+    <scripts />
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <height>37</height>
+    <border_width>1</border_width>
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <image></image>
+    <visible>true</visible>
+    <pv_name></pv_name>
+    <border_color>
+      <color red="0" green="128" blue="255" />
+    </border_color>
+    <widget_type>Action Button</widget_type>
+    <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+    <background_color>
+      <color name="ButtonFG" red="180" green="180" blue="180" />
+    </background_color>
+    <width>146</width>
+    <x>743</x>
+    <name>Action Button_6</name>
+    <y>600</y>
+    <style>0</style>
+    <foreground_color>
+      <color red="0" green="0" blue="0" />
+    </foreground_color>
+    <actions hook="false" hook_all="false">
+      <action type="OPEN_DISPLAY">
+        <path>../../Common/IDmps.opi</path>
+        <macros>
+          <include_parent_macros>true</include_parent_macros>
+          <ID>$(dev)</ID>
+          <PS>$(sys){$(dev)}MPS:</PS>
+        </macros>
+        <replace>0</replace>
+        <description>MPS Page</description>
+      </action>
+    </actions>
+    <font>
+      <fontdata fontName="Sans" height="11" style="1" />
+    </font>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
+    <toggle_button>false</toggle_button>
+    <border_style>0</border_style>
+    <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+    <alarm_pulsing>false</alarm_pulsing>
+    <tooltip>$(actions)</tooltip>
+    <push_action_index>0</push_action_index>
+    <rules />
+    <enabled>true</enabled>
+    <wuid>232da96b:149b616621f:-5239</wuid>
+    <pv_value />
+    <text>MPS Lookup</text>
+    <scripts />
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <height>37</height>
+    <border_width>1</border_width>
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <image></image>
+    <visible>true</visible>
+    <pv_name></pv_name>
+    <border_color>
+      <color red="0" green="128" blue="255" />
+    </border_color>
+    <widget_type>Action Button</widget_type>
+    <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+    <background_color>
+      <color name="ButtonFG" red="180" green="180" blue="180" />
+    </background_color>
+    <width>137</width>
+    <x>751</x>
+    <name>Action Button_12</name>
+    <y>640</y>
+    <style>0</style>
+    <foreground_color>
+      <color red="0" green="0" blue="0" />
+    </foreground_color>
+    <actions hook="false" hook_all="false">
+      <action type="OPEN_DISPLAY">
+        <path>../../Common/mps_lookup.opi</path>
+        <macros>
+          <include_parent_macros>true</include_parent_macros>
+          <ID>$(dev)</ID>
+          <SYS>$(sys)</SYS>
+          <DEV>$(dev)</DEV>
+          <GAP>$(SYS){$(DEV)-Ax:Gap}-Mtr.RBV</GAP>
+          <PS>$(SYS){$(DEV)}MPS:</PS>
+        </macros>
+        <replace>0</replace>
+        <description>MPS Lookup</description>
+      </action>
+    </actions>
+    <font>
+      <fontdata fontName="Sans" height="11" style="1" />
+    </font>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
+    <toggle_button>false</toggle_button>
+    <border_style>0</border_style>
+    <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
+    <alarm_pulsing>false</alarm_pulsing>
+    <tooltip>$(actions)</tooltip>
+    <push_action_index>0</push_action_index>
+    <rules />
+    <enabled>true</enabled>
+    <wuid>2dc2e345:14bf5ccac53:-33d2</wuid>
+    <pv_value />
+    <text>MPS 2D Lookup</text>
+    <scripts />
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <height>39</height>
+    <border_width>1</border_width>
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <image></image>
+    <visible>true</visible>
+    <pv_name></pv_name>
+    <border_color>
+      <color red="0" green="128" blue="255" />
+    </border_color>
+    <widget_type>Action Button</widget_type>
+    <backcolor_alarm_sensitive>false</backcolor_alarm_sensitive>
+    <background_color>
+      <color name="ButtonFG" red="180" green="180" blue="180" />
+    </background_color>
+    <width>145</width>
+    <x>744</x>
+    <name>Action Button_13</name>
+    <y>640</y>
+    <style>0</style>
+    <foreground_color>
+      <color red="0" green="0" blue="0" />
+    </foreground_color>
+    <actions hook="false" hook_all="false">
+      <action type="OPEN_DISPLAY">
+        <path>../../Common/mps_lookup2D.opi</path>
+        <macros>
+          <include_parent_macros>true</include_parent_macros>
+          <ID>$(dev)</ID>
+          <SYS>$(sys)</SYS>
+          <DEV>$(dev)</DEV>
+          <GAP>$(SYS){$(DEV)-Ax:Gap}-Mtr.RBV</GAP>
+          <PS>$(SYS){$(DEV)}MPS:</PS>
+        </macros>
+        <replace>0</replace>
+        <description>MPS Lookup</description>
+      </action>
+    </actions>
+    <font>
+      <fontdata fontName="Sans" height="11" style="1" />
+    </font>
+  </widget>
+</display>

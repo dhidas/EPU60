@@ -1,0 +1,15 @@
+file calibration.template 
+{
+
+	# SYS,DEV: All records are prefixed with $(SYS){$(DEV)}
+	# CTS_PER_EGU: PMAC counts in one EGU (um)
+	
+	pattern
+    { 
+		SYS, DEV, CTS_PER_EGU
+	}
+    
+    {
+		"SR:C07-ID:G1A", "EPU:1", "6.25"
+	}
+}

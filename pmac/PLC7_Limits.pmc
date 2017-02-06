@@ -1,0 +1,123 @@
+CLOSE
+
+#include "macro_constants_def.pmc"
+
+; Margin of actual limits around the logical one
+; Set the axis limits to 50 um around the target max/min
+#define LimitMargin 312.5
+
+
+; ******************************************************************************
+; PLC that applies new motor axis limits when limit parameters change
+; ******************************************************************************
+DISABLE PLC PLC_Limits
+OPEN PLC PLC_Limits CLEAR
+
+	; Check for disable limits req
+	IF (DisableLimitsReq!=LimitsDisabled)
+		
+		IF (DisableLimitsReq!=0)
+      ; Disable limit switches on all 8 motors
+			I124 = $82A001
+			I224 = $82A001
+			I324 = $82A001
+			I424 = $82A001
+			I524 = $82A001
+			I624 = $82A001
+			I724 = $82A001
+			I824 = $82A001
+
+			I113 = 0
+			I213 = 0
+			I313 = 0
+			I413 = 0
+				   
+			I114 = 0
+			I214 = 0
+			I314 = 0
+			I414 = 0
+
+			I513 = 0
+			I613 = 0
+			I713 = 0
+			I813 = 0
+
+			I514 = 0
+			I614 = 0
+			I714 = 0
+			I814 = 0
+		ENDIF
+		
+		; If limits disabled was requested, signal that
+		; If not, clear condition (subsequent IF block will set appropriate limits
+		LimitsDisabled = DisableLimitsReq
+	ENDIF
+	
+	
+	IF (LimitsDisabled=0)
+		; Minimum GAP
+		; Check if change was requested or EPICS reseted some of the offsets
+		IF (MaximumGap!=MaximumGapPrev OR I113=0 OR I213=0 OR I313=0 OR I413=0)
+      ; Make sure limits are enabled on gap motors
+      I124 = $80A001
+      I224 = $80A001
+      I324 = $80A001
+      I424 = $80A001
+
+			; Apply new Gap limits			
+			I113 = (MaximumGap/2) - GapMotor1Offset + LimitMargin 
+			I213 = (MaximumGap/2) - GapMotor2Offset + LimitMargin
+			I313 = (MaximumGap/2) - GapMotor3Offset + LimitMargin
+			I413 = (MaximumGap/2) - GapMotor4Offset + LimitMargin
+			
+			; Clear request
+			MaximumGapPrev = MaximumGap
+		ENDIF
+		
+		
+		; Minimum GAP
+		; Check if change was requested or EPICS reseted some of the offsets
+		IF (MinimumGap!=MinimumGapPrev OR	I114=0 OR I214=0 OR I314=0 OR I414=0)
+      ; Make sure limits are enabled on gap motors
+      I124 = $80A001
+      I224 = $80A001
+      I324 = $80A001
+      I424 = $80A001
+
+      ; Apply new Gap limits
+			I114 = (MinimumGap/2) - GapMotor1Offset - LimitMargin
+			I214 = (MinimumGap/2) - GapMotor2Offset - LimitMargin
+			I314 = (MinimumGap/2) - GapMotor3Offset - LimitMargin
+			I414 = (MinimumGap/2) - GapMotor4Offset - LimitMargin
+			
+			; Clear request
+			MinimumGapPrev = MinimumGap
+		ENDIF
+		
+		
+		; Maximum Phase
+		; Check if change was requested or EPICS reseted some of the offsets
+		IF (MaximumEngPhase!=MaximumEngPhasePrev OR I513=0 OR I613=0 OR I713=0 OR I813=0 OR I514=0 OR I614=0 OR I714=0 OR I814=0)
+			; Make sure limits are enabled on phase motors
+			I524 = $80A001
+			I624 = $80A001
+			I724 = $80A001
+			I824 = $80A001
+      
+			I513 = MaximumEngPhase - PhaseMotor5Offset + LimitMargin
+			I613 = MaximumEngPhase - PhaseMotor6Offset + LimitMargin
+			I713 = MaximumEngPhase - PhaseMotor7Offset + LimitMargin
+			I813 = MaximumEngPhase - PhaseMotor8Offset + LimitMargin
+		
+			I514 = -MaximumEngPhase - PhaseMotor5Offset - LimitMargin
+			I614 = -MaximumEngPhase - PhaseMotor6Offset - LimitMargin
+			I714 = -MaximumEngPhase - PhaseMotor7Offset - LimitMargin
+			I814 = -MaximumEngPhase - PhaseMotor8Offset - LimitMargin
+			
+			; Clear request
+			MaximumEngPhasePrev=MaximumEngPhase
+		ENDIF
+	
+	ENDIF
+	
+CLOSE

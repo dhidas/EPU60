@@ -1,0 +1,121 @@
+file motor.template 
+{
+	
+	# SYS,DEV: All records are prefixed with $(SYS){$(DEV)}
+	# AXIS: Axis name for the motor
+	# PMACPORT: Port name used in asyn records
+	# MOTORPORT: Port name used for motor records / axis
+	# S: Axis number
+	# MRES: Motor resolution = 1/CTS_PER_EGU
+	# OFFVAR: PMAC P-variable containing the calibrated offset
+	# HKILLVAR: PMAC M-variable containing the upper kill switch status
+	# LKILLVAR: PMAC M-variable containing the lower kill switch status
+	# AMPFEVAR: PMAC M-variable mapping the digital output for clearing amplifier fault error for the motor drive
+	# STOPCMD: PMAC Command for stopping the motor.
+	# CTS_PER_EGU: PMAC counts in one EGU (um)
+
+	pattern
+	{ 
+		SYS, DEV, AXIS, PMACPORT, MOTORPORT, S, MRES, OFFVAR, HKILLVAR, LKILLVAR, AMPFEVAR, STOPCMD, CTS_PER_EGU, MTRENABLE
+	}
+
+	  
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:TU", "PMAC_ETH_PORT", "PMAC0", "1", "0.2", "P1011", "M1", "M2",  "M41", "P1061=1", "1", "M33"}
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:BU", "PMAC_ETH_PORT", "PMAC0", "3", "0.2", "P1013", "M5", "M6",  "M43", "P1063=1", "1", "M35"}
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:TO", "PMAC_ETH_PORT", "PMAC0", "5", "0.2", "P1015", "M9", "M10", "M45", "P1065=1", "1", "M37"}
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:TI", "PMAC_ETH_PORT", "PMAC0", "6", "0.2", "P1016", "M11","M12", "M46", "P1066=1", "1", "M38"}
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:BO", "PMAC_ETH_PORT", "PMAC0", "7", "0.2", "P1017", "M13","M14", "M47", "P1067=1", "1", "M39"}
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:BI", "PMAC_ETH_PORT", "PMAC0", "8", "0.2", "P1018", "M15","M16", "M48", "P1068=1", "1", "M40"}
+}
+
+
+file motorHome.template 
+{
+
+	# SYS,DEV: All records are prefixed with $(SYS){$(DEV)}
+	# AXIS: Axis name for the motor
+	# PMACPORT: Port name used in asyn records
+	# HOMEPOSVAR: Variable containing the captured home position
+	# HOMECMD: Command sent to PMAC to initiate homing on the given axis
+  # CTS_PER_EGU: PMAC counts in one EGU (um)
+
+	pattern
+	{
+		SYS, DEV, AXIS, PMACPORT, HOMEPOSVAR, HOMECMD, CTS_PER_EGU
+	}
+
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:TU", "PMAC_ETH_PORT", "P1041", "ENA PLC 22", "1" }
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:BU", "PMAC_ETH_PORT", "P1043", "ENA PLC 23", "1" }
+
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:TO", "PMAC_ETH_PORT", "P1041", "ENA PLC 24", "1" }
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:TI", "PMAC_ETH_PORT", "P1041", "ENA PLC 25", "1" }
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:BO", "PMAC_ETH_PORT", "P1041", "ENA PLC 26", "1" }
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:BI", "PMAC_ETH_PORT", "P1041", "ENA PLC 27", "1" }
+
+}
+
+file velocityPhase.template
+{
+	# SYS,DEV: All records are prefixed with $(SYS){$(DEV)}
+	# TYPE: Type of motor (gap or phase)
+	# INITIAL: Initial value (designed)
+	# MOTORX: Motors whose velocity will be affected
+	
+	pattern
+	{
+		SYS, DEV, TYPE, INITIAL,
+		MOTOR1, MOTOR2,
+		MOTOR3, MOTOR4
+	}
+	
+	{ 
+		"SR:C07-ID:G1A", "EPU:1", "Phase", "0",
+		"SR:C07-ID:G1A{EPU:1-Ax:TO}-Mtr", "SR:C07-ID:G1A{EPU:1-Ax:TI}-Mtr", 
+		"SR:C07-ID:G1A{EPU:1-Ax:BO}-Mtr", "SR:C07-ID:G1A{EPU:1-Ax:BI}-Mtr" 
+	}
+}
+
+
+
+file velocityGap.template
+{
+	# SYS,DEV: All records are prefixed with $(SYS){$(DEV)}
+	# TYPE: Type of motor (gap or phase)
+	# INITIAL: Initial value (designed)
+	# MOTORX: Motors whose velocity will be affected
+	
+	pattern
+	{
+		SYS, DEV, TYPE, INITIAL
+		MOTOR1, MOTOR2
+	}
+	
+	{ 
+		"SR:C07-ID:G1A", "EPU:1", "Gap", 500
+		"SR:C07-ID:G1A{EPU:1-Ax:TU}-Mtr", "SR:C07-ID:G1A{EPU:1-Ax:BU}-Mtr", 
+	}
+	
+}
+
+
+
+file motorDisable.template 
+{
+	
+	# SYS,DEV: All records are prefixed with $(SYS){$(DEV)}
+	# AXIS: Gap Axis name for the motor for which disable processing is done
+  # COMP_AXIS: Complementary gap motor on the same girder
+  # NUM: The axis state option when this motor is master (NUM=1 left motor, NUM=2 right motor)
+  # CNUM: The axis stat option when the other motor is master
+  # GIRDER: Girder name Ax:T or Ax:B
+
+	pattern
+	{ 
+		SYS, DEV, AXIS, COMP_AXIS, NUM, CNUM, GIRDER
+	}
+	  
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:TU", "Ax:TD", "1", "2", "Ax:T" }
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:TD", "Ax:TU", "2", "1", "Ax:T" }
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:BU", "Ax:BD", "1", "2", "Ax:B" }
+	{ "SR:C07-ID:G1A", "EPU:1", "Ax:BD", "Ax:BU", "2", "1", "Ax:B" }
+}

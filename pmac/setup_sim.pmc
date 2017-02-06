@@ -1,0 +1,118 @@
+#include "macro_constants_def.pmc"
+
+
+; Map M-Variables to self for simulating inputs
+M1->*
+M2->*
+M3->*
+M4->*
+M5->*
+M6->*
+M7->*
+M8->*
+M9->*
+M10->*
+M11->*
+M12->*
+M13->*
+M14->*
+M15->*
+M16->*
+M17->*
+M18->*
+M19->*
+M20->*
+M21->*
+M22->*
+M23->*
+M24->*
+
+; ***** Set normal simulation parameters ******
+M1,16,1 = 1 ; Kill switches not activated
+M18,2,1 = 1 ; Tilt meters not tripped
+M17 = 0     ; Overtemperature not activated
+M20 = 1     ; No interlock
+M23 = 0     ; No ILOCK override
+M22 = 1  	; No emergency button
+
+; Setup servo to internal pulse and direction
+I7010 = 8
+I7020 = 8
+I7030 = 8
+I7040 = 8	
+I7110 = 8
+I7120 = 8
+I7130 = 8
+I7140 = 8
+	
+; Setup encoder conversion table
+I8000 = $78000
+I8001 = $78008
+I8002 = $78010
+I8003 = $78018
+I8004 = $78100
+I8005 = $78108
+I8006 = $78110
+I8007 = $78118
+I8008 = $0
+
+; Setup motor output address
+I102 = $78004
+I202 = $7800C
+I302 = $78014
+I402 = $7801C
+I502 = $78104
+I602 = $7810C
+I702 = $78114
+I802 = $7811C
+
+I124,8,100 = $02A001
+
+; Offsets to zero
+I129,8,100 = 0
+
+; P from PID to default
+I130,8,100 = 2000
+
+; Multipliers to default
+I107,8,100 = 96
+I108,8,100 = 96
+I109,8,100 = 96
+
+; Motor position feedback address
+I103 = $003501
+I203 = $003502
+I303 = $003503
+I403 = $003504
+I503 = $003505
+I603 = $003506
+I703 = $003507
+I803 = $003508
+
+
+; Motor velocity feedback address
+I104 = $003501
+I204 = $003502
+I304 = $003503
+I404 = $003504
+I504 = $003505
+I604 = $003506
+I704 = $003507
+I804 = $003508
+
+MaximumGap			= 240000 * 6.25
+MinimumGap			= 11500  * 6.25
+MaximumEngPhase	= 35000  * 6.25
+MaximumOpPhase	= 24600  * 6.25
+
+
+; Declare encoders at 36000
+M162,8,100=110592000
+
+; Set simulation signals to inactive
+Interlock=1
+InterlockOverride=0
+OpenGapSignal=1
+
+; Define simulation mode
+SimulationMode=1
