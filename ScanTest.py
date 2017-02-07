@@ -53,8 +53,6 @@ wait_for(PV_PHASE_MOVN)
 
 while True:
     for phase_mode in range(0, 4):
-	if phase_mode == 2:
-            continue
 
         caput(PV_GAP_SP, 15000, wait=True)
         print 'waiting for gap to move'
